@@ -240,7 +240,7 @@ public class PantallaJuego extends GLScreen {
         world.update(deltaTime);
         if (world.score != lastScore) {
             lastScore = world.score + 10;    //Modifique para que el last score se mantenga a traves de las jugadas. Tambien le puse el 10 para que no haya colision de scores.
-            scoreString = "" + "Score: " + lastScore;
+            scoreString = "" + "Score: " + lastScore;  //Checar porque no estoy seguro que se mantenga 
         }
       }
 

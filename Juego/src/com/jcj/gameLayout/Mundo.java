@@ -130,6 +130,7 @@ public class Mundo {
         updateBala(deltaTime);
         if(score >= 5000){
         	updateGripeJ(deltaTime);
+        	gripeJ.vidas= 10;
         	jefeYa=true;
         	gripeJ.position.set(0 + Jefe.ANCHO_JEFE/2,ALTO_MUNDO/4 + Jefe.ALTO_JEFE/4 + 5);
         	updateBalaGripe(deltaTime);
@@ -196,7 +197,6 @@ public class Mundo {
     			if (OverlapTester.overlapRectangles(bala.bounds, gripeJ.bounds)) {
     				gripeJ.vidas--;
     				bala.choque=true;
-    				//score+=1000;
     			}
             
     			if(bala.position.x > 480 ||bala.position.x < 0){
