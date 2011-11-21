@@ -71,7 +71,7 @@ public class Mundo {
         this.listener = listener;
         this.Gripe = new ArrayList<Villano>();
         this.BalaGripe = new Balas(-100, -100);
-        for(int i=0; i<lluvia.length; i++) { lluvia[i] = new Lluvia((float)Math.random() * 480,150); }
+        for(int i=0; i<lluvia.length; i++) { lluvia[i] = new Lluvia((float)Math.random() * 480,320+(float)Math.random() *320 ); }
 
         
        
@@ -306,33 +306,7 @@ public class Mundo {
     	
     }
     
-    private void updateBalaMalo(float deltaTime){
-    	if (PantallaMision.mision == 3 && (BalaGripe.position.x > ANCHO_MUNDO || BalaGripe.position.x < 0)){
-    		BalaGripe.velocidad = 2;
-    		BalaGripe.position.x = gripeJ.position.x;
-    		BalaGripe.position.y = John.position.y-10;
-    	}
-    	if (gripeJ.estado==Jefe.ESTADO_IZQUIERDA && (BalaGripe.position.x > ANCHO_MUNDO || BalaGripe.position.x < 0)){
-    		BalaGripe.velocidad = -2;
-    		BalaGripe.position.x = gripeJ.position.x;
-    		BalaGripe.position.y = John.position.y-10;
-    	}
-
-    	if (OverlapTester.overlapRectangles(John.bounds, BalaGripe.bounds)) {
-            BalaGripe.position.y = 500;
-            Recursos.playSound(Recursos.hitSound);
-            John.vidas--;
-    	}
-    	
-    	for (int i = 0; i < Mejoral.size(); i++){
-        	Balas bala = Mejoral.get(i);
-        	if (OverlapTester.overlapRectangles(bala.bounds, BalaGripe.bounds)) {
-        		BalaGripe.position.x = gripeJ.position.x;
-        	 }
-    	}
-    	BalaGripe.update(deltaTime);
-    	
-    }
+   
     private void updateGripeJ(float deltaTime){
     	gripeJ.estado=Jefe.ESTADO_DERECHA;
     	gripeJ.velocidady = 0;

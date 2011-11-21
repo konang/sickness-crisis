@@ -118,7 +118,11 @@ public class PantallaJuego extends GLScreen {
                 
                 if (OverlapTester.pointInRectangle(pauseresumeBounds, touchPoint)) {
                     pauseresume=!pauseresume;
-                    Recursos.music.play();
+                    if (Settings.soundEnabled)
+                        Recursos.music.play();
+                    else
+                        Recursos.music.pause();
+                   
                     state=GAME_RUNNING;
           
                 	}
