@@ -130,7 +130,17 @@ public class PantallaJuego extends GLScreen {
                 touchPoint.set(event.x, event.y);
                 guiCam.touchToWorld(touchPoint);
                 
-                if (OverlapTester.pointInRectangle(pauseresumeBounds, touchPoint)) {}
+                if (OverlapTester.pointInRectangle(pauseresumeBounds, touchPoint)) {
+                    pauseresume=!pauseresume;
+                    if(Settings.soundEnabled){
+                    	Recursos.music.play();
+                    }
+                    else{
+                    	Recursos.music.pause();
+                    }
+                    state=GAME_RUNNING;
+          
+                	}
                 }
          }
         
