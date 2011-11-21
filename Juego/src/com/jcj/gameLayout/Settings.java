@@ -57,13 +57,8 @@ public class Settings {
     }
 
     public static void addScore(int score) {
-        for (int i = 0; i < 5; i++) {
-            if (highscores [i] < score) {
-                for (int j = 4; j > i; j--)
-                    highscores[j] = highscores[j - 1];
-                highscores[i] = score;
-                break;
-            }
-        }
+    	if (highscores [PantallaMision.mision-1] < score) {
+    		highscores [PantallaMision.mision-1]=score;    		
+    	}
     }
 }
