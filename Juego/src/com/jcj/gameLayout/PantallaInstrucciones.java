@@ -21,13 +21,17 @@ public class PantallaInstrucciones extends GLScreen {
     Rectangle flechaderechaBounds;
     Rectangle flechaizquierdaBounds;
     Vector2 touchPoint;
+    String instrucciones= "";
+    		
+    
 
     public PantallaInstrucciones(Game game) {
         super(game);
         guiCam = new Camera2D(glGraphics, 480, 320);
         batcher = new SpriteBatcher(glGraphics, 100);
-        flechaderechaBounds= new Rectangle(435, 40, 30, 19);
-        flechaizquierdaBounds= new Rectangle(15, 40 ,30 ,19);
+        flechaderechaBounds= new Rectangle(435, 40, 30, 25);
+        flechaizquierdaBounds= new Rectangle(15, 40 ,30 ,25);
+        
         
         
         touchPoint = new Vector2();
@@ -40,7 +44,7 @@ public class PantallaInstrucciones extends GLScreen {
 
     @Override
     public void resume() {
-    	bgImage = new Texture(glGame, "instrucciones.png");
+    	bgImage = new Texture(glGame, "background.png");
         bgRegion = new TextureRegion(bgImage, 0, 0, 480, 320);
 
     }
@@ -99,8 +103,10 @@ public class PantallaInstrucciones extends GLScreen {
 
         batcher.beginBatch(Recursos.items);
         	if(PantallaMenu.primerjuego)
-        	batcher.drawSprite(450, 50, 30, 19, Recursos.flechaderecha);
-        	batcher.drawSprite(30, 50, 30, 19, Recursos.flechaizquierda);
+        	batcher.drawSprite(450, 50, 30, 25, Recursos.flechaderecha);
+        	batcher.drawSprite(30, 50, 30, 25, Recursos.flechaizquierda);
+        	float anchoInstrucciones = Recursos.font.glyphWidth * instrucciones.length();
+            Recursos.font.drawText(batcher, instrucciones, Mundo.ANCHO_MUNDO/4 - anchoInstrucciones/2, Mundo.ALTO_MUNDO/4);
         batcher.endBatch();
 
         gl.glDisable(GL10.GL_BLEND);

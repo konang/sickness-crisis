@@ -65,7 +65,7 @@ public class PantallaJuego extends GLScreen {
         world = new Mundo(worldListener);
         renderer = new RenderMundo(glGraphics, batcher, world);
         lastScore = 0;
-        scoreString = "score: 0";
+        scoreString = "Puntaje: 0";
     }
     
     @Override
@@ -185,7 +185,6 @@ public class PantallaJuego extends GLScreen {
                 if (OverlapTester.pointInRectangle(pauseresumeBounds, touchPoint)) {
                     pauseresume=!pauseresume;
                     state=GAME_PAUSED;
-                    //Insertar Feedback
                     Recursos.playSound(Recursos.clickSound);
                     Recursos.music.pause();
                 }
@@ -244,7 +243,7 @@ public class PantallaJuego extends GLScreen {
         world.update(deltaTime);
         if (world.score != lastScore) {
             lastScore = world.score + 10;    //Modifique para que el last score se mantenga a traves de las jugadas. Tambien le puse el 10 para que no haya colision de scores.
-            scoreString = "" + "Score: " + lastScore;  //Checar porque no estoy seguro que se mantenga 
+            scoreString = "" + "Puntaje: " + lastScore;  //Checar porque no estoy seguro que se mantenga 
         }
       }
 
