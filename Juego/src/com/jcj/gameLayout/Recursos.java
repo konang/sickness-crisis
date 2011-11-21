@@ -222,6 +222,7 @@ public class Recursos {
         background.reload();
         background2.reload();
         background3.reload();
+        background4.reload();
         items.reload();
         if (Settings.soundEnabled)
             music.play();
