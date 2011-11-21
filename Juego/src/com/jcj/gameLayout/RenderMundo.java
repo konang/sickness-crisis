@@ -266,6 +266,11 @@ public class RenderMundo {
         	mundo.gripeJ.velocidad = -mundo.gripeJ.velocidad;
         	batcher.drawSprite(mundo.gripeJ.position.x, mundo.gripeJ.position.y, 146, 126, keyFrame);
         	break;
+    	case 4 : 
+    		keyFrame = Recursos.rotaDerecha.getKeyFrame(mundo.gripeJ.tiempoEstado, Animation.ANIMATION_LOOPING);
+        	mundo.gripeJ.velocidad = -mundo.gripeJ.velocidad;
+        	batcher.drawSprite(mundo.gripeJ.position.x, mundo.gripeJ.position.y, 146, 126, keyFrame);
+        	break;
     	}
     	
     }
