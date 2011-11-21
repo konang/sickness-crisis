@@ -33,7 +33,7 @@ public class PantallaHighscores extends GLScreen {
         batcher = new SpriteBatcher(glGraphics, 100);
         highScores = new String[5];
         for (int i = 0; i < 4; i++) {
-            highScores[i] = (i + 1) + ". " + Settings.highscores[i];
+            highScores[i] = "Mision "+(i + 1) + ":" + Settings.highscores[i];
             xOffset = Math.max(highScores[i].length() * Recursos.font.glyphWidth, xOffset);
         }
     }
