@@ -22,8 +22,6 @@ public class PantallaMision extends GLScreen {
     Rectangle misiondosBounds;
     Rectangle misiontresBounds;
     Rectangle misioncuatroBounds;
-    Rectangle misioncincoBounds;
-    Rectangle misionseisBounds;
     Rectangle instruccionesBounds;
     Rectangle regresarMenuPrincipal;
     Vector2 touchPoint;
@@ -39,6 +37,8 @@ public class PantallaMision extends GLScreen {
         misionunoBounds = new Rectangle(16, 191, 88, 60);
         regresarMenuPrincipal = new Rectangle(384, 1, 96, 33);
         misiondosBounds = new Rectangle(16,125,88,60);
+        misiontresBounds = new Rectangle(435,191,88,60);
+        misioncuatroBounds = new Rectangle(435,125,88,60);
         
         touchPoint = new Vector2();
     }
@@ -83,6 +83,22 @@ public class PantallaMision extends GLScreen {
                     Recursos.playSound(Recursos.clickSound);
                     game.setScreen(new PantallaInfoMision(game));
                     mision=2;
+                    PantallaJuego.state= PantallaJuego.GAME_RUNNING;
+                   
+                    return;
+                }
+                if (OverlapTester.pointInRectangle(misiontresBounds, touchPoint)) {
+                    Recursos.playSound(Recursos.clickSound);
+                    game.setScreen(new PantallaInfoMision(game));
+                    mision=3;
+                    PantallaJuego.state= PantallaJuego.GAME_RUNNING;
+                   
+                    return;
+                }
+                if (OverlapTester.pointInRectangle(misioncuatroBounds, touchPoint)) {
+                    Recursos.playSound(Recursos.clickSound);
+                    game.setScreen(new PantallaInfoMision(game));
+                    mision=4;
                     PantallaJuego.state= PantallaJuego.GAME_RUNNING;
                    
                     return;
