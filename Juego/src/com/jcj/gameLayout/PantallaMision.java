@@ -35,7 +35,7 @@ public class PantallaMision extends GLScreen {
         guiCam = new Camera2D(glGraphics, 480, 320);
         batcher = new SpriteBatcher(glGraphics, 100);
         misionunoBounds = new Rectangle(16, 191, 88, 60);
-        regresarMenuPrincipal = new Rectangle(384, 1, 96, 33);
+        regresarMenuPrincipal = new Rectangle(360, 0, 120, 41);
         misiondosBounds = new Rectangle(16,125,88,60);
         misiontresBounds = new Rectangle(435,191,88,60);
         misioncuatroBounds = new Rectangle(435,125,88,60);
@@ -133,7 +133,7 @@ public class PantallaMision extends GLScreen {
         batcher.beginBatch(Recursos.items);
             batcher.drawSprite(60, 160, 90, 185, Recursos.misionIzq);
             batcher.drawSprite(435, 160, 90, 185, Recursos.misionDer);
-            batcher.drawSprite(432, 18, 96, 33, Recursos.regresarMenuPrincipal);
+            batcher.drawSprite(420, 20, 120, 41, Recursos.regresarMenuPrincipal);
             batcher.drawSprite(240, 160, 120, 148, Recursos.cell);
         batcher.endBatch();
 
