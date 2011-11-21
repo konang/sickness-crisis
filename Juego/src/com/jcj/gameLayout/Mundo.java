@@ -187,6 +187,14 @@ public class Mundo {
     			Mejoral.get(i).position.x = 1200;
     			score+=10;
     		}
+    		for(int j=0; j<lluvia.length; j++){
+    			if (OverlapTester.overlapRectangles(bala.bounds, lluvia[j].bounds)) {
+    				score+=5;
+    				bala.choque=true;
+    				lluvia[j].position.y =360;
+    				lluvia[j].position.x =(float)Math.random()*480;
+    			}
+    		}
     		
     		if (OverlapTester.overlapRectangles(bala.bounds, gripeJ.bounds)) {
 				gripeJ.vidas--;
@@ -219,6 +227,7 @@ public class Mundo {
     		}
     	
     	}
+    	
     	
     	for (int i = 0; i < Gripe.size(); i++){
     		if(Gripe.get(i).vidas<=0){
