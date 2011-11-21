@@ -41,8 +41,7 @@ public class Mundo {
     public final Jefe gripeJ;
     public final List<Item> items;
     public final List<Villano> Gripe;
-    public final List<Villano> Gastritis;
-
+    public Lluvia[] lluvia = new Lluvia[6];
     public final MundoListener listener;
     public List<Balas> Mejoral;
     public final Balas BalaGripe;
@@ -73,7 +72,10 @@ public class Mundo {
         this.listener = listener;
         this.Gripe = new ArrayList<Villano>();
         this.BalaGripe = new Balas(-100, -100);
-        this.Gastritis = new ArrayList<Villano>();
+        for(int i=0; i<lluvia.length; i++) { lluvia[i] = new Lluvia((float)Math.random() * 480,150); }
+
+        
+       
         int randomPos = 0;							//Numero random de la posición de las balas
         int randomOri = 0; 							//Numero random de en que lado de la pantalla está
         	randomPos = (int)(Math.random() * 480) + 50;
@@ -129,6 +131,7 @@ public class Mundo {
        	updateGripe(deltaTime);  
         prueba0.update(deltaTime);
         updateBala(deltaTime);
+        updateLluvia(deltaTime);
         if(score >= 500){
         	updateGripeJ(deltaTime);
         	jefeYa=true;
@@ -255,6 +258,7 @@ public class Mundo {
             if(PantallaMision.mision==2 && malo.estado==malo.ESTADO_DERECHA){
             		malo.estado = Villano.SALTO_VILLANODER;
             }
+            
             else if(PantallaMision.mision==2&&malo.estado==malo.ESTADO_IZQUIERDA){
             		malo.estado = Villano.SALTO_VILLANOIZQ;
             }
@@ -280,6 +284,28 @@ public class Mundo {
             
             malo.update(deltaTime);
         }
+    	
+    }
+    private void updateLluvia(float deltaTime){
+    	if(PantallaMision.mision == 3){
+    		for(int i=0; i<lluvia.length; i++) {
+    			//Lluvia prueba = lluvia[i];
+    			lluvia[i].update(deltaTime);
+    			
+    			
+    			if(lluvia[i].position.y < 0){
+    				lluvia[i].position.y =360;
+    				lluvia[i].position.x =(float)Math.random()*480;
+    			}
+    			if (OverlapTester.overlapRectangles(John.bounds, lluvia[i].bounds)) {
+    				lluvia[i].position.y =360;
+    				lluvia[i].position.x =(float)Math.random()*480;
+    				Recursos.playSound(Recursos.hitSound);
+    	            John.vidas--;
+    		}
+
+    	}
+     }
     	
     }
     
@@ -312,6 +338,33 @@ public class Mundo {
     	
     }
     
+    private void updateBalaMalo(float deltaTime){
+    	if (PantallaMision.mision == 3 && (BalaGripe.position.x > ANCHO_MUNDO || BalaGripe.position.x < 0)){
+    		BalaGripe.velocidad = 2;
+    		BalaGripe.position.x = gripeJ.position.x;
+    		BalaGripe.position.y = John.position.y-10;
+    	}
+    	if (gripeJ.estado==Jefe.ESTADO_IZQUIERDA && (BalaGripe.position.x > ANCHO_MUNDO || BalaGripe.position.x < 0)){
+    		BalaGripe.velocidad = -2;
+    		BalaGripe.position.x = gripeJ.position.x;
+    		BalaGripe.position.y = John.position.y-10;
+    	}
+
+    	if (OverlapTester.overlapRectangles(John.bounds, BalaGripe.bounds)) {
+            BalaGripe.position.y = 500;
+            Recursos.playSound(Recursos.hitSound);
+            John.vidas--;
+    	}
+    	
+    	for (int i = 0; i < Mejoral.size(); i++){
+        	Balas bala = Mejoral.get(i);
+        	if (OverlapTester.overlapRectangles(bala.bounds, BalaGripe.bounds)) {
+        		BalaGripe.position.x = gripeJ.position.x;
+        	 }
+    	}
+    	BalaGripe.update(deltaTime);
+    	
+    }
     private void updateGripeJ(float deltaTime){
     	gripeJ.estado=Jefe.ESTADO_DERECHA;
     	gripeJ.velocidady = 0;
