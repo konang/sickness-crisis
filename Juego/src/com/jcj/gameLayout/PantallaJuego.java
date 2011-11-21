@@ -54,10 +54,10 @@ public class PantallaJuego extends GLScreen {
         batcher = new SpriteBatcher(glGraphics, 1000);
         soundBounds = new Rectangle(390, 282, 40, 35);
         pauseresumeBounds = new Rectangle(441 , 282, 37, 36);
-        boton1Bounds = new Rectangle(359,5,42,40 );
-        boton2Bounds = new Rectangle(420,5,42,40 );
-        izquierdaBounds = new Rectangle(3 , 1, 44, 27);
-        derechaBounds = new Rectangle(78, 1, 44, 27);
+        boton1Bounds = new Rectangle(359,5,47,45 );
+        boton2Bounds = new Rectangle(420,5,47,45 );
+        izquierdaBounds = new Rectangle(3 , 1, 49, 38);
+        derechaBounds = new Rectangle(78, 1, 49, 38);
         touchPoint = new Vector2();
         worldListener = new MundoListener() {
             
@@ -264,9 +264,9 @@ public class PantallaJuego extends GLScreen {
         batcher.beginBatch(Recursos.items);
             batcher.drawSprite(460, 300, 37, 36, pauseresume? Recursos.resume : Recursos.pause);
             batcher.drawSprite(410, 300, 40, 35, Settings.soundEnabled ? Recursos.soundOn : Recursos.soundOff);
-            batcher.drawSprite(25, 15, 44, 27, Recursos.dpadizquierda);
-            batcher.drawSprite(100, 15, 44, 27, Recursos.dpadderecha);
-            batcher.drawSprite(420, 25, 120, 40, Recursos.botones);
+            batcher.drawSprite(30, 30, 49, 32, Recursos.dpadizquierda);   // Agrego 5 a ambas partes
+            batcher.drawSprite(105, 30, 49, 32, Recursos.dpadderecha);
+            batcher.drawSprite(415, 34, 120, 45, Recursos.botones);
             for(int i = 0; i<world.John.vidas; i++){
             	batcher.drawSprite(250+14*i, 290, 14, 15, Recursos.vidaJohn);
             }

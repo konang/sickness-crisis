@@ -11,10 +11,18 @@ import com.jcj.framework.impl.GLGame;
 public class Recursos {
     public static Texture background;
     public static TextureRegion backgroundRegion;
-    public static Texture backgroundjuego;
-    public static TextureRegion backgroundRegionjuegp;
+    public static Texture background2;
+    public static TextureRegion backgroundRegion2;
+    public static Texture background3;
+    public static TextureRegion backgroundRegion3;
+    public static Texture background4;
+    public static TextureRegion backgroundRegion4;
 
     public static Texture items;
+    public static TextureRegion vidaGastritis;
+    public static TextureRegion vidaGripe;
+    public static TextureRegion vidaViruela;
+    public static TextureRegion vidaRota;
     public static TextureRegion mainMenu;
     public static TextureRegion pauseMenu;
     public static TextureRegion misionIzq;
@@ -54,6 +62,9 @@ public class Recursos {
     public static Animation breakingPlatform;
     public static Animation gripeJDerecha;
     public static Animation gripeJIzquierda;
+    public static Animation gastritisDerecha;
+    public static Animation rotaDerecha;
+    public static Animation varicelaDerecha;
     public static Animation balaGripe;
     public static Font font;
     public static Music music;
@@ -68,8 +79,12 @@ public class Recursos {
     	
         background = new Texture(game, "background.png");
         backgroundRegion = new TextureRegion(background, 0, 0, 480, 320);
-       // backgroundjuego = new Texture(game, "background.png");
-        //backgroundRegionjuegp = new TextureRegion(background, 0, 0, 480, 320);
+        background2 = new Texture(game, "background2.png");
+        backgroundRegion2 = new TextureRegion(background2, 0, 0, 480, 320);
+        background3 = new Texture(game, "background3.png");
+        backgroundRegion3 = new TextureRegion(background3, 0, 0, 480, 320);
+        //background4 = new Texture(game, "background4.png");
+        //backgroundRegion4 = new TextureRegion(background4, 0, 0, 480, 320);
         
         items = new Texture(game, "imagenes.png");
         
@@ -94,7 +109,10 @@ public class Recursos {
         botones = new TextureRegion(items, 125, 198, 112, 40);
 
         vidaJohn = new TextureRegion(items, 527, 23, 28, 31);
-
+        vidaGastritis = new TextureRegion(items, 562, 25, 21, 19);
+        vidaGripe = new TextureRegion(items, 528, 53, 24, 26);
+        vidaViruela = new TextureRegion(items, 561, 54, 25, 22);
+        vidaRota = new TextureRegion(items, 591, 55, 25, 21);
         score= new TextureRegion (items,189,294,86,28);
 
 
@@ -126,17 +144,28 @@ public class Recursos {
         villanoIzquierda = new Animation(0.4f,
         						new TextureRegion(items, 192, 442, 32, 35),
         						new TextureRegion(items, 238, 442, 32, 35));
-        gripeJDerecha = new Animation(0.3f, new TextureRegion(items, 462, 434, 78, 61),       // checar Width y length de cada uno en caso de no pintar bien
-        						new TextureRegion(items, 549, 432, 79, 64),
-        						new TextureRegion(items, 633, 431, 86, 66),
-        						new TextureRegion(items, 720, 429, 87, 65),
-        						new TextureRegion(items, 808, 430, 87, 64));
         gripeJIzquierda = new Animation(0.3f, new TextureRegion(items, 660, 512, 83, 65), 
 								new TextureRegion(items, 749, 512, 83, 65),
 								new TextureRegion(items, 836, 514, 80, 65),
 								new TextureRegion(items, 923, 515, 80, 65),
 								new TextureRegion(items, 1007, 517, 84, 68));
-        
+        rotaDerecha = new Animation(0.3f, new TextureRegion(items, 524, 270, 101, 58),
+								new TextureRegion(items, 630, 270, 94, 60),
+								new TextureRegion(items, 728, 272, 100, 62),
+								new TextureRegion(items, 630, 270, 94, 60));
+        gripeJDerecha = new Animation(0.3f, new TextureRegion(items, 462, 435, 78, 61), 
+								new TextureRegion(items, 550, 433, 79, 64),
+								new TextureRegion(items, 631, 431, 86, 66),
+								new TextureRegion(items, 718, 429, 87, 65),
+								new TextureRegion(items, 810, 430, 87, 64));
+        gastritisDerecha = new Animation(0.3f, new TextureRegion(items, 532, 199, 45, 50), 
+								new TextureRegion(items, 599, 197, 47, 51),
+								new TextureRegion(items, 669, 199, 51, 51),
+								new TextureRegion(items, 599, 197, 47, 51));
+        varicelaDerecha = new Animation(0.3f, new TextureRegion(items, 532, 110, 71, 63), 
+								new TextureRegion(items, 627, 114, 68, 61),
+								new TextureRegion(items, 711, 111, 65, 63),
+								new TextureRegion(items, 627, 114, 68, 61)); 
         johnIzquierda = new Animation(0.4f,
                                 new TextureRegion(items, 291, 502, 50, 53),
                                 new TextureRegion(items, 347, 507, 61, 48));
@@ -169,6 +198,8 @@ public class Recursos {
 
     public static void reload() {
         background.reload();
+        background2.reload();
+        background3.reload();
         items.reload();
         if (Settings.soundEnabled)
             music.play();

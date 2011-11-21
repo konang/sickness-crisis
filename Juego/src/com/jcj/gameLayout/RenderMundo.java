@@ -96,9 +96,23 @@ public class RenderMundo {
         camara.setViewportAndMatrices();
 
         // Inicia un batch para dibujar el fondo
-        batcher.beginBatch(Recursos.background);
-            batcher.drawSprite(camara.position.x, camara.position.y, ANCHO_VISTA, ALTO_VISTA, Recursos.backgroundRegion);
-        batcher.endBatch();
+            switch (PantallaMision.mision){
+            case 1 : 
+            	batcher.beginBatch(Recursos.background);
+            		batcher.drawSprite(camara.position.x, camara.position.y, ANCHO_VISTA, ALTO_VISTA, Recursos.backgroundRegion);
+            	batcher.endBatch();
+            		break;
+            case 2 : 
+            	batcher.beginBatch(Recursos.background2);
+            		batcher.drawSprite(camara.position.x, camara.position.y, ANCHO_VISTA, ALTO_VISTA, Recursos.backgroundRegion2);
+            	batcher.endBatch();
+            	break;	
+            case 3 : 
+            	batcher.beginBatch(Recursos.background3);
+            		batcher.drawSprite(camara.position.x, camara.position.y, ANCHO_VISTA, ALTO_VISTA, Recursos.backgroundRegion3);
+            	batcher.endBatch();
+            	break;
+            }
 
         // Habilita el modo de fusión.
         gl.glEnable(GL10.GL_BLEND);
@@ -236,8 +250,23 @@ public class RenderMundo {
     }
     public void renderGripeJ(){  //Renderea al Jefe
     	TextureRegion keyFrame;
-    	keyFrame = Recursos.gripeJDerecha.getKeyFrame(mundo.gripeJ.tiempoEstado, Animation.ANIMATION_LOOPING);
-    	mundo.gripeJ.velocidad = -mundo.gripeJ.velocidad;
-    	batcher.drawSprite(mundo.gripeJ.position.x, mundo.gripeJ.position.y, 166, 130, keyFrame);
+    	switch(PantallaMision.mision){
+    	case 1 : 
+    		keyFrame = Recursos.gripeJDerecha.getKeyFrame(mundo.gripeJ.tiempoEstado, Animation.ANIMATION_LOOPING);
+        	mundo.gripeJ.velocidad = -mundo.gripeJ.velocidad;
+        	batcher.drawSprite(mundo.gripeJ.position.x, mundo.gripeJ.position.y, 166, 130, keyFrame);
+        	break;
+    	case 2 : 
+    		keyFrame = Recursos.gastritisDerecha.getKeyFrame(mundo.gripeJ.tiempoEstado, Animation.ANIMATION_LOOPING);
+        	mundo.gripeJ.velocidad = -mundo.gripeJ.velocidad;
+        	batcher.drawSprite(mundo.gripeJ.position.x, mundo.gripeJ.position.y, 102, 102, keyFrame);
+        	break;
+    	case 3 : 
+    		keyFrame = Recursos.varicelaDerecha.getKeyFrame(mundo.gripeJ.tiempoEstado, Animation.ANIMATION_LOOPING);
+        	mundo.gripeJ.velocidad = -mundo.gripeJ.velocidad;
+        	batcher.drawSprite(mundo.gripeJ.position.x, mundo.gripeJ.position.y, 146, 126, keyFrame);
+        	break;
+    	}
+    	
     }
 }
