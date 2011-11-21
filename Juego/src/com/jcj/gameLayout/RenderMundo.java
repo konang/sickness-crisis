@@ -207,9 +207,20 @@ public class RenderMundo {
         		//    Dibuja el cuadro de la animación
         			batcher.drawSprite(bala.position.x, bala.position.y, 12, 12, keyFrame);
         		break;
-        		case 3:keyFrame = Recursos.balaJohnV.getKeyFrame(mundo.John.tiempoEstado, Animation.ANIMATION_LOOPING);
-        		//    Dibuja el cuadro de la animación
-        			batcher.drawSprite(bala.position.x, bala.position.y, 22, 10, keyFrame);
+        		case 3:
+        			switch(mundo.John.estado){
+        			case Heroe.ESTADO_DERECHA:
+        			case Heroe.SALTO_HEROEDER: 
+        				keyFrame = Recursos.balaJohnV.getKeyFrame(mundo.John.tiempoEstado, Animation.ANIMATION_LOOPING);
+        				//    Dibuja el cuadro de la animación
+        				batcher.drawSprite(bala.position.x, bala.position.y, 22, 10, keyFrame);
+        				break;
+        			case Heroe.ESTADO_IZQUIERDA:
+        			case Heroe.SALTO_HEROEIZQ:
+        				keyFrame = Recursos.balaJohnVIzq.getKeyFrame(mundo.John.tiempoEstado, Animation.ANIMATION_LOOPING);
+        				batcher.drawSprite(bala.position.x, bala.position.y, 22, 10, keyFrame);
+        				break;
+        			}
         		break;
         		case 4:keyFrame = Recursos.balaJohnR.getKeyFrame(mundo.John.tiempoEstado, Animation.ANIMATION_LOOPING);
         		//    Dibuja el cuadro de la animación
@@ -304,7 +315,7 @@ public class RenderMundo {
     	if(PantallaMision.mision == 3||PantallaMision.mision == 4){
     		for(int i=0; i<mundo.lluvia.length; i++) {
     			//Lluvia prueba = mundo.lluvia[i];
-    			keyFrame = Recursos.balaDerecha.getKeyFrame(mundo.John.tiempoEstado, Animation.ANIMATION_LOOPING);
+    			keyFrame = Recursos.piedra.getKeyFrame(mundo.John.tiempoEstado, Animation.ANIMATION_LOOPING);
     			batcher.drawSprite(mundo.lluvia[i].position.x, mundo.lluvia[i].position.y, 24, 27, keyFrame);
     			
     			

@@ -74,6 +74,7 @@ public class Recursos {
     public static Animation balaGripe;
     public static Animation balaJohnG; 
     public static Animation balaJohnV;
+    public static Animation balaJohnVIzq;
     public static Animation balaJohnR;
     public static Font font;
     public static Music music;
@@ -117,6 +118,7 @@ public class Recursos {
         pause = new TextureRegion(items, 22, 203, 37, 34);
         resume = new TextureRegion(items, 72, 203, 20, 36);
         botones = new TextureRegion(items, 125, 198, 112, 40);
+        
 
         vidaJohn = new TextureRegion(items, 527, 23, 28, 31);
         vidaGastritis = new TextureRegion(items, 562, 25, 21, 19);
@@ -154,14 +156,17 @@ public class Recursos {
 								new TextureRegion(items, 703, 357, 33, 34));
         balaJohnG = new Animation(0.4f,
 								new TextureRegion(items, 957, 551, 12, 12),
-								new TextureRegion(items, 984, 551, 12, 12 ),
-								new TextureRegion(items, 1013, 551, 12, 12 ),
-								new TextureRegion(items, 1041, 551, 12, 12));
+								new TextureRegion(items, 984, 551, 12, 12 ));
         balaJohnV = new Animation(0.4f,
 								new TextureRegion(items, 955, 532, 22, 10),
 								new TextureRegion(items, 984, 532, 22, 10),
 								new TextureRegion(items, 1010, 532, 22, 10),
 								new TextureRegion(items, 1038, 532, 22, 10));
+        balaJohnVIzq = new Animation(0.4f,
+								new TextureRegion(items, 1096, 533, 22, 10),
+								new TextureRegion(items, 1124, 533, 22, 10),
+								new TextureRegion(items, 1150, 533, 22, 10),
+								new TextureRegion(items, 1179, 533, 22, 10));
         balaJohnR = new Animation(0.4f,
 								new TextureRegion(items, 945, 498, 29, 29 ),
 								new TextureRegion(items, 984, 498, 29, 29),
