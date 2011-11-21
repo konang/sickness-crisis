@@ -277,7 +277,7 @@ public class RenderMundo {
     }
     private void renderLluvia(){
     	TextureRegion keyFrame;
-    	if(PantallaMision.mision == 3){
+    	if(PantallaMision.mision == 3||PantallaMision.mision == 4){
     		for(int i=0; i<mundo.lluvia.length; i++) {
     			//Lluvia prueba = mundo.lluvia[i];
     			keyFrame = Recursos.balaDerecha.getKeyFrame(mundo.John.tiempoEstado, Animation.ANIMATION_LOOPING);
