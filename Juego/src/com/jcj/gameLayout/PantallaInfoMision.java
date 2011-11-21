@@ -23,6 +23,12 @@ public class PantallaInfoMision extends GLScreen {
     Vector2 touchPoint;
     Texture bgImage;
     TextureRegion bgRegion;
+    Texture bgImage2;
+    TextureRegion bgRegion2;
+    Texture bgImage3;
+    TextureRegion bgRegion3;
+    Texture bgImage4;
+    TextureRegion bgRegion4;
 
     public PantallaInfoMision(Game game) {
         super(game);
@@ -38,8 +44,17 @@ public class PantallaInfoMision extends GLScreen {
     
     @Override
     public void resume() {
-    	bgImage = new Texture(glGame, "mision1.png");
+        bgImage = new Texture(glGame, "mision1.png");
         bgRegion = new TextureRegion(bgImage, 0, 0, 480, 320);
+
+        bgImage2 = new Texture(glGame, "mision2.png");
+        bgRegion2 = new TextureRegion(bgImage2, 0, 0, 480, 320);
+        	
+        bgImage3 = new Texture(glGame, "mision3.png");
+        bgRegion3 = new TextureRegion(bgImage3, 0, 0, 480, 320);
+  
+        bgImage4 = new Texture(glGame, "mision4.png");
+        bgRegion4 = new TextureRegion(bgImage4, 0, 0, 480, 320);
 
     }
 
@@ -77,7 +92,6 @@ public class PantallaInfoMision extends GLScreen {
                 if (OverlapTester.pointInRectangle(flechaizquierdaBounds, touchPoint)) {
                 	Recursos.playSound(Recursos.clickSound);
                     game.setScreen(new PantallaMision(game));
-                    
                     return;
                     
                 }
@@ -92,9 +106,28 @@ public class PantallaInfoMision extends GLScreen {
         guiCam.setViewportAndMatrices();
 
         gl.glEnable(GL10.GL_TEXTURE_2D);
-        batcher.beginBatch(bgImage);
-            batcher.drawSprite(240, 160, 480, 320, bgRegion);
-        batcher.endBatch();
+        switch (PantallaMision.mision){
+        case 1 : 
+        	batcher.beginBatch(bgImage);
+        		batcher.drawSprite(240, 160, 480, 320, bgRegion);
+        	batcher.endBatch();
+        	break;
+        case 2 : 
+        	batcher.beginBatch(bgImage2);
+    			batcher.drawSprite(240, 160, 480, 320, bgRegion2);
+    		batcher.endBatch();
+        	break;	
+        case 3 : 
+        	batcher.beginBatch(bgImage3);
+    			batcher.drawSprite(240, 160, 480, 320, bgRegion3);
+    		batcher.endBatch();
+        	break;
+        case 4 : 
+        	batcher.beginBatch(bgImage4);
+        		batcher.drawSprite(240, 160, 480, 320, bgRegion4);
+        	batcher.endBatch();
+        	break;
+        }
 
         gl.glEnable(GL10.GL_BLEND);
         gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
