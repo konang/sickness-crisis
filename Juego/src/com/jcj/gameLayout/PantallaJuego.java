@@ -108,7 +108,7 @@ public class PantallaJuego extends GLScreen {
     public void updatePaused(){
     	List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
         game.getInput().getKeyEvents();
-        int len = touchEvents.size();
+        int len = touchEvents.size(); 
         
         for (int i = 0; i < len; i ++) {
             TouchEvent event = touchEvents.get(i);
@@ -124,7 +124,8 @@ public class PantallaJuego extends GLScreen {
                 	}
                 }
          }
-    	
+        
+        	
     }
     	
     public void updateRunning(float deltaTime){
@@ -249,7 +250,8 @@ public class PantallaJuego extends GLScreen {
 
     @Override
     public void present(float deltaTime) {
-        GL10 gl = glGraphics.getGL();
+    	String pausa = "pausa";
+    	GL10 gl = glGraphics.getGL();
         gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
         gl.glEnable(GL10.GL_TEXTURE_2D);
         
@@ -268,9 +270,12 @@ public class PantallaJuego extends GLScreen {
             for(int i = 0; i<world.John.vidas; i++){
             	batcher.drawSprite(250+14*i, 290, 14, 15, Recursos.vidaJohn);
             }
-            
             float anchoScore = Recursos.font.glyphWidth * scoreString.length();
             Recursos.font.drawText(batcher, scoreString, 120 - anchoScore/2, 295);
+            float anchoPausa = Recursos.font.glyphWidth * pausa.length();
+            if(state == GAME_PAUSED){
+            	Recursos.font.drawText(batcher, pausa, world.ANCHO_MUNDO/2 - anchoPausa/2, world.ALTO_MUNDO/2);
+            }
         batcher.endBatch();
 
         gl.glDisable(GL10.GL_BLEND);
