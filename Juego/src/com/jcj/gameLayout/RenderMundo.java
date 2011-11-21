@@ -124,6 +124,7 @@ public class RenderMundo {
         	renderJohn();
            	renderGripe();
            	renderBala1();
+           	renderLluvia();
            	if(mundo.jefeYa){
            		renderGripeJ();
            		renderBalaGripe();
@@ -271,6 +272,20 @@ public class RenderMundo {
         	mundo.gripeJ.velocidad = -mundo.gripeJ.velocidad;
         	batcher.drawSprite(mundo.gripeJ.position.x, mundo.gripeJ.position.y, 146, 126, keyFrame);
         	break;
+    	}
+    	
+    }
+    private void renderLluvia(){
+    	TextureRegion keyFrame;
+    	if(PantallaMision.mision == 3){
+    		for(int i=0; i<mundo.lluvia.length; i++) {
+    			//Lluvia prueba = mundo.lluvia[i];
+    			keyFrame = Recursos.balaDerecha.getKeyFrame(mundo.John.tiempoEstado, Animation.ANIMATION_LOOPING);
+    			batcher.drawSprite(mundo.lluvia[i].position.x, mundo.lluvia[i].position.y, 24, 27, keyFrame);
+    			
+    			
+    		}
+
     	}
     	
     }
