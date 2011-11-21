@@ -112,6 +112,11 @@ public class RenderMundo {
             		batcher.drawSprite(camara.position.x, camara.position.y, ANCHO_VISTA, ALTO_VISTA, Recursos.backgroundRegion3);
             	batcher.endBatch();
             	break;
+            case 4 : 
+            	batcher.beginBatch(Recursos.background4);
+            		batcher.drawSprite(camara.position.x, camara.position.y, ANCHO_VISTA, ALTO_VISTA, Recursos.backgroundRegion4);
+            	batcher.endBatch();
+            	break;
             }
 
         // Habilita el modo de fusión.
