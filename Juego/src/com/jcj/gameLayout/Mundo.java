@@ -129,7 +129,7 @@ public class Mundo {
        	updateGripe(deltaTime);  
         prueba0.update(deltaTime);
         updateBala(deltaTime);
-        if(score >= 5000){
+        if(score >= 500){
         	updateGripeJ(deltaTime);
         	jefeYa=true;
         	gripeJ.position.set(0 + Jefe.ANCHO_JEFE/2,ALTO_MUNDO/4 + Jefe.ALTO_JEFE/4 + 5);
@@ -182,7 +182,7 @@ public class Mundo {
     		if (OverlapTester.overlapRectangles(bala.bounds, prueba0.bounds)) {
     			prueba0.position.x = 500;
     			Mejoral.get(i).position.x = 1200;
-    			score+=100;
+    			score+=10;
     		}
     		
     		if (OverlapTester.overlapRectangles(bala.bounds, gripeJ.bounds)) {
@@ -200,7 +200,7 @@ public class Mundo {
     			if (OverlapTester.overlapRectangles(bala.bounds, malo.bounds)) {
     				malo.vidas--;
     				bala.choque=true;
-    				score+=100;
+    				score+=10;
     			}
 
     		}
@@ -227,7 +227,8 @@ public class Mundo {
     	if(gripeJ.vidas <= 0){
 			PantallaJuego.state= PantallaJuego.GAME_LEVEL_END;
 			jefeYa= false;
-			score +=5000;
+			score +=500;
+			score *= John.vidas;
 		}
     	
     }

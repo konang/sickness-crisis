@@ -10,7 +10,7 @@ public class Juego extends GLGame {
 
     @Override
     public Screen getStartScreen() {
-        return new PantallaMenu(this);
+        return new PantallaLogo(this);
     }
 
     @Override

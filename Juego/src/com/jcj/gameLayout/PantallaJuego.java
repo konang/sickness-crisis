@@ -134,7 +134,7 @@ public class PantallaJuego extends GLScreen {
         int len = touchEvents.size();
         Random rand= new Random();
         if(deltaTime>rand.nextFloat()*world.Gripe.size()&&world.Gripe.size()<10){
-            Villano villanonuevo = new Villano((world.ANCHO_MUNDO)+((int)(Math.random() * 480) + 50), world.ALTO_MUNDO/4);
+            Villano villanonuevo = new Villano((world.ANCHO_MUNDO)+((int)(Math.random() * 480*2) + 50), world.ALTO_MUNDO/4);
             world.Gripe.add(villanonuevo);
             Recursos.playSound(Recursos.clickSound);
         }
@@ -244,7 +244,7 @@ public class PantallaJuego extends GLScreen {
         world.update(deltaTime);
         if (world.score != lastScore) {
             lastScore = world.score + 10;    //Modifique para que el last score se mantenga a traves de las jugadas. Tambien le puse el 10 para que no haya colision de scores.
-            scoreString = "" + "Score: " + lastScore + " " + world.gripeJ.vidas;  //Checar porque no estoy seguro que se mantenga 
+            scoreString = "" + "Score: " + lastScore;  //Checar porque no estoy seguro que se mantenga 
         }
       }
 
