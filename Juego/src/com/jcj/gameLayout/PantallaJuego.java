@@ -118,6 +118,7 @@ public class PantallaJuego extends GLScreen {
                 
                 if (OverlapTester.pointInRectangle(pauseresumeBounds, touchPoint)) {
                     pauseresume=!pauseresume;
+                    Recursos.music.play();
                     state=GAME_RUNNING;
           
                 	}
@@ -183,7 +184,9 @@ public class PantallaJuego extends GLScreen {
                 if (OverlapTester.pointInRectangle(pauseresumeBounds, touchPoint)) {
                     pauseresume=!pauseresume;
                     state=GAME_PAUSED;
+                    //Insertar Feedback
                     Recursos.playSound(Recursos.clickSound);
+                    Recursos.music.pause();
                 }
 
                 if (OverlapTester.pointInRectangle(derechaBounds, touchPoint)) {
@@ -240,7 +243,7 @@ public class PantallaJuego extends GLScreen {
         world.update(deltaTime);
         if (world.score != lastScore) {
             lastScore = world.score + 10;    //Modifique para que el last score se mantenga a traves de las jugadas. Tambien le puse el 10 para que no haya colision de scores.
-            scoreString = "" + "Score: " + lastScore;  //Checar porque no estoy seguro que se mantenga 
+            scoreString = "" + "Score: " + lastScore + " " + world.gripeJ.vidas;  //Checar porque no estoy seguro que se mantenga 
         }
       }
 

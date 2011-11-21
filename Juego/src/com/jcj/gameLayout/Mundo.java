@@ -80,7 +80,8 @@ public class Mundo {
            	randomOri = (int)(Math.random() * 2) + 1;
         
         this.score=0;
-        this.prueba0= new Villano ((ANCHO_MUNDO)+((int)(Math.random() * 480) + 50), ALTO_MUNDO/4);   
+        this.prueba0= new Villano ((ANCHO_MUNDO)+((int)(Math.random() * 480) + 50), ALTO_MUNDO/4);
+        gripeJ.vidas = 20;     //Vidas Pruebas, checar ya bien cuantas queremos
         
         //generateLevel();
     }
@@ -130,7 +131,6 @@ public class Mundo {
         updateBala(deltaTime);
         if(score >= 5000){
         	updateGripeJ(deltaTime);
-        	gripeJ.vidas= 10;
         	jefeYa=true;
         	gripeJ.position.set(0 + Jefe.ANCHO_JEFE/2,ALTO_MUNDO/4 + Jefe.ALTO_JEFE/4 + 5);
         	updateBalaGripe(deltaTime);
@@ -184,6 +184,15 @@ public class Mundo {
     			Mejoral.get(i).position.x = 1200;
     			score+=100;
     		}
+    		
+    		if (OverlapTester.overlapRectangles(bala.bounds, gripeJ.bounds)) {
+				gripeJ.vidas--;
+				bala.choque=true;
+			}
+    		
+    		if(bala.position.x > 480 ||bala.position.x < 0){
+				bala.choque=true;
+			}
     	
     		for (int j = 0; j < Gripe.size(); j++) {
     			Villano malo = Gripe.get(j);
@@ -193,16 +202,7 @@ public class Mundo {
     				bala.choque=true;
     				score+=100;
     			}
-    			
-    			if (OverlapTester.overlapRectangles(bala.bounds, gripeJ.bounds)) {
-    				gripeJ.vidas--;
-    				bala.choque=true;
-    			}
-            
-    			if(bala.position.x > 480 ||bala.position.x < 0){
-    				bala.choque=true;
-    			}
-            
+
     		}
     	
     		bala.update(deltaTime);

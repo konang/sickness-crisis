@@ -120,10 +120,10 @@ public class Recursos {
         						new TextureRegion(items, 539, 537, 11, 11),
         						new TextureRegion(items, 510, 537, 11, 11),
         						new TextureRegion(items, 483, 537, 11, 11));
-        villanoIzquierda = new Animation(0.4f,
+        villanoDerecha = new Animation(0.4f,
 								new TextureRegion(items, 191, 498, 32, 35),
 								new TextureRegion(items, 237, 498, 32, 35));
-        villanoDerecha = new Animation(0.4f,
+        villanoIzquierda = new Animation(0.4f,
         						new TextureRegion(items, 192, 442, 32, 35),
         						new TextureRegion(items, 238, 442, 32, 35));
         gripeJDerecha = new Animation(0.3f, new TextureRegion(items, 462, 434, 78, 61),       // checar Width y length de cada uno en caso de no pintar bien

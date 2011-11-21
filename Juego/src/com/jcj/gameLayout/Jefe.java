@@ -25,7 +25,7 @@ public class Jefe extends DynamicGameObject {
 	    public static final float VELOCIDAD_JEFE = 20;       //Velocidad horizontal
 	    public static final float ANCHO_JEFE = 166;         //Ancho del objeto
 	    public static final float ALTO_JEFE = 130;          //Alto del objeto
-	    public static final float VIDA_JEFE = 10;
+	    public static final float VIDA_JEFE = 25;
 	    
 	    int estado;                                           //Guarda el estado actual del personaje
 	    float tiempoEstado;                                    // Indica el tiempo que el personaje lleva en dicho estado
@@ -33,7 +33,7 @@ public class Jefe extends DynamicGameObject {
 	    float velocidady = 0;
 	    float puntos = 1000;
 	    boolean choque=false;
-	    int vidas=10;
+	    int vidas=30;
 	    
 	    /*
 	     * Método constructor de la clase VILLANO.
