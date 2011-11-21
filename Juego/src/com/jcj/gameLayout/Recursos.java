@@ -21,7 +21,7 @@ public class Recursos {
     public static Texture items;
     public static TextureRegion vidaGastritis;
     public static TextureRegion vidaGripe;
-    public static TextureRegion vidaViruela;
+    public static TextureRegion vidaVaricela;
     public static TextureRegion vidaRota;
     public static TextureRegion mainMenu;
     public static TextureRegion pauseMenu;
@@ -63,6 +63,10 @@ public class Recursos {
     public static Animation gripeJDerecha;
     public static Animation gripeJIzquierda;
     public static Animation gastritisDerecha;
+    public static Animation balaGastritis;
+    public static Animation balaVaricela;
+    public static Animation balaRota;
+    public static Animation piedra;
     public static Animation rotaDerecha;
     public static Animation varicelaDerecha;
     public static Animation balaGripe;
@@ -83,8 +87,8 @@ public class Recursos {
         backgroundRegion2 = new TextureRegion(background2, 0, 0, 480, 320);
         background3 = new Texture(game, "background3.png");
         backgroundRegion3 = new TextureRegion(background3, 0, 0, 480, 320);
-        //background4 = new Texture(game, "background4.png");
-        //backgroundRegion4 = new TextureRegion(background4, 0, 0, 480, 320);
+        background4 = new Texture(game, "background4.png");
+        backgroundRegion4 = new TextureRegion(background4, 0, 0, 480, 320);
         
         items = new Texture(game, "imagenes.png");
         
@@ -111,13 +115,31 @@ public class Recursos {
         vidaJohn = new TextureRegion(items, 527, 23, 28, 31);
         vidaGastritis = new TextureRegion(items, 562, 25, 21, 19);
         vidaGripe = new TextureRegion(items, 528, 53, 24, 26);
-        vidaViruela = new TextureRegion(items, 561, 54, 25, 22);
+        vidaVaricela = new TextureRegion(items, 561, 54, 25, 22);
         vidaRota = new TextureRegion(items, 591, 55, 25, 21);
         score= new TextureRegion (items,189,294,86,28);
 
 
         spring = new TextureRegion(items, 128, 0, 32, 32);
         regresarMenuPrincipal = new TextureRegion(items, 305, 341, 192, 66);
+        piedra = new Animation(0.4f,
+								new TextureRegion(items, 606, 533, 21, 20),
+								new TextureRegion(items, 656, 533, 20, 19));
+        balaGastritis = new Animation(0.4f,
+								new TextureRegion(items, 483, 568, 18, 32),
+								new TextureRegion(items, 516, 578, 31, 18),
+								new TextureRegion(items, 569, 571, 18, 32),
+								new TextureRegion(items, 604, 579, 31, 18));
+        balaVaricela = new Animation(0.4f,
+								new TextureRegion(items, 667, 572, 35, 32),
+								new TextureRegion(items, 708, 570, 32, 36),
+								new TextureRegion(items, 748, 571, 35, 32),
+								new TextureRegion(items, 790, 570, 32, 35));
+        balaRota = new Animation(0.4f,
+								new TextureRegion(items, 725, 514, 42, 33),
+								new TextureRegion(items, 781, 514, 34, 32),
+								new TextureRegion(items, 831, 519, 42, 33),
+								new TextureRegion(items, 891, 515, 34, 32));
         balaGripe = new Animation(0.4f,
 								new TextureRegion(items, 552, 356, 34, 33),
 								new TextureRegion(items, 603, 359, 34, 34),
