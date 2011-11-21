@@ -56,7 +56,7 @@ public class Recursos {
     public static Animation balaDerecha;
     public static Animation johnIzquierda;
     public static Animation johnDerecha;
-    public static TextureRegion bobHit;
+    public static TextureRegion jefes;
     public static Animation squirrelFly;
     public static TextureRegion platform;
     public static Animation breakingPlatform;
@@ -213,7 +213,7 @@ public class Recursos {
         johnDerecha = new Animation(0.4f,
                                 new TextureRegion(items, 289, 437, 61, 48),
                                 new TextureRegion(items, 357, 431, 50, 53));
-        bobHit = new TextureRegion(items, 128, 128, 32, 32);
+        jefes = new TextureRegion(items, 850, 198, 192, 137);
         squirrelFly = new Animation(0.2f,
                                     new TextureRegion(items, 0, 160, 32, 32),
                                     new TextureRegion(items, 32, 160, 32, 32));

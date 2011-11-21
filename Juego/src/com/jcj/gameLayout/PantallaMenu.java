@@ -4,6 +4,7 @@ import com.jcj.framework.Game;
 import com.jcj.framework.Input.TouchEvent;
 import com.jcj.framework.gl.Camera2D;
 import com.jcj.framework.gl.SpriteBatcher;
+import com.jcj.framework.gl.TextureRegion;
 import com.jcj.framework.impl.GLScreen;
 import com.jcj.framework.math.OverlapTester;
 import com.jcj.framework.math.Rectangle;
@@ -47,8 +48,7 @@ public class PantallaMenu extends GLScreen {
 
                 if (OverlapTester.pointInRectangle(jugarBounds, touchPoint)) {
                     Recursos.playSound(Recursos.clickSound);
-                    game.setScreen(new PantallaInstrucciones(game));
-                    primerjuego=true;
+                    game.setScreen(new PantallaMision(game));
                     return;
                     
                 }
@@ -95,7 +95,8 @@ public class PantallaMenu extends GLScreen {
             batcher.drawSprite(240, 320 - 10 - 71, 275, 105, Recursos.logo);
             batcher.drawSprite(240, 110, 96, 106, Recursos.mainMenu);
             batcher.drawSprite(20, 17, 40, 35, Settings.soundEnabled ? Recursos.soundOn : Recursos.soundOff);
-            batcher.drawSprite(410, 100, 60, 74, Recursos.cell);
+            batcher.drawSprite(92, 120, 192, 137, Recursos.jefes);
+            batcher.drawSprite(390, 100, 60, 74, Recursos.cell);
         batcher.endBatch();
 
         gl.glDisable(GL10.GL_BLEND);
