@@ -17,6 +17,7 @@ public class Recursos {
     public static TextureRegion backgroundRegion3;
     public static Texture background4;
     public static TextureRegion backgroundRegion4;
+    
 
     public static Texture items;
     public static TextureRegion vidaGastritis;
@@ -44,6 +45,7 @@ public class Recursos {
     public static TextureRegion spring;
     public static TextureRegion regresarMenuPrincipal;
     public static TextureRegion botones;
+    
 
     public static TextureRegion vidaJohn;
 
@@ -92,6 +94,7 @@ public class Recursos {
         backgroundRegion3 = new TextureRegion(background3, 0, 0, 480, 320);
         background4 = new Texture(game, "background4.png");
         backgroundRegion4 = new TextureRegion(background4, 0, 0, 480, 320);
+        
         
         items = new Texture(game, "imagenes.png");
         

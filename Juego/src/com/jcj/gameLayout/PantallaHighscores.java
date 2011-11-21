@@ -23,6 +23,8 @@ public class PantallaHighscores extends GLScreen {
     Vector2 touchPoint;
     String[] highScores;
     float xOffset = 0;
+    public static Texture backgroundHi;
+    public static TextureRegion backgroundHigh;
 
     public PantallaHighscores(Game game) {
         super(game);
@@ -65,8 +67,8 @@ public class PantallaHighscores extends GLScreen {
 
         gl.glEnable(GL10.GL_TEXTURE_2D);
 
-        batcher.beginBatch(Recursos.background);
-            batcher.drawSprite(240, 160, 480, 320, Recursos.backgroundRegion);
+        batcher.beginBatch(backgroundHi);
+            batcher.drawSprite(240, 160, 480, 320, backgroundHigh);
         batcher.endBatch();
 
         gl.glEnable(GL10.GL_BLEND);
@@ -75,7 +77,7 @@ public class PantallaHighscores extends GLScreen {
         batcher.beginBatch(Recursos.items);
             float y = 120;
             for (int i = 3; i >= 0; i--) {
-                Recursos.font.drawText(batcher, highScores[i], 160+50, y);
+                Recursos.font.drawText(batcher, highScores[i], 160+65, y);             //Cheque para ponerlos despues de la imagen
                 y += Recursos.font.glyphHeight;
             }
             batcher.drawSprite(32, 32, 30, 19, Recursos.flechaizquierda);
@@ -86,7 +88,8 @@ public class PantallaHighscores extends GLScreen {
 
     @Override
     public void resume() {
-
+    	backgroundHi = new Texture(glGame, "backgroundhighscore.png");
+        backgroundHigh = new TextureRegion(backgroundHi, 0, 0, 480, 320);
     }
 
     @Override
@@ -96,6 +99,6 @@ public class PantallaHighscores extends GLScreen {
 
     @Override
     public void dispose() {
-
+    	backgroundHi.dispose();
     }
 }

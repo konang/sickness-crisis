@@ -16,8 +16,8 @@ import javax.microedition.khronos.opengles.GL10;
 public class PantallaInstrucciones extends GLScreen {
     Camera2D guiCam;
     SpriteBatcher batcher;
-    Texture bgImage;
-    TextureRegion bgRegion;
+    Texture bgIns;
+    TextureRegion bgInst;
     Rectangle flechaderechaBounds;
     Rectangle flechaizquierdaBounds;
     Vector2 touchPoint;
@@ -44,14 +44,14 @@ public class PantallaInstrucciones extends GLScreen {
 
     @Override
     public void resume() {
-    	bgImage = new Texture(glGame, "background.png");
-        bgRegion = new TextureRegion(bgImage, 0, 0, 480, 320);
+    	bgIns = new Texture(glGame, "instrucciones.png");
+        bgInst = new TextureRegion(bgIns, 0, 0, 480, 320);
 
     }
 
     @Override
     public void dispose() {
-    	bgImage.dispose();
+    	bgIns.dispose();
         
     }
     
@@ -94,8 +94,8 @@ public class PantallaInstrucciones extends GLScreen {
         guiCam.setViewportAndMatrices();
 
         gl.glEnable(GL10.GL_TEXTURE_2D);
-        batcher.beginBatch(bgImage);
-            batcher.drawSprite(240, 160, 480, 320, bgRegion);
+        batcher.beginBatch(bgIns);
+            batcher.drawSprite(240, 160, 480, 320, bgInst);
         batcher.endBatch();
 
         gl.glEnable(GL10.GL_BLEND);
@@ -105,8 +105,6 @@ public class PantallaInstrucciones extends GLScreen {
         	if(PantallaMenu.primerjuego)
         	batcher.drawSprite(450, 50, 30, 25, Recursos.flechaderecha);
         	batcher.drawSprite(30, 50, 30, 25, Recursos.flechaizquierda);
-        	float anchoInstrucciones = Recursos.font.glyphWidth * instrucciones.length();
-            Recursos.font.drawText(batcher, instrucciones, Mundo.ANCHO_MUNDO/4 - anchoInstrucciones/2, Mundo.ALTO_MUNDO/4);
         batcher.endBatch();
 
         gl.glDisable(GL10.GL_BLEND);
