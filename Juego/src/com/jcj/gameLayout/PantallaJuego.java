@@ -11,7 +11,8 @@ import com.jcj.framework.math.Vector2;
 import com.jcj.gameLayout.Mundo;
 import com.jcj.gameLayout.RenderMundo;
 import com.jcj.gameLayout.Mundo.MundoListener;
-import com.jcj.jumper.Assets;
+import com.jcj.gameLayout.Settings;
+
 
 
 
@@ -91,7 +92,14 @@ public class PantallaJuego extends GLScreen {
     }
     
     public void updateLevelEnd(){
+    	/*if (lastScore >= Settings.highscores[PantallaMision.mision-1])
+            scoreString = "new highscore: " + lastScore;
+        else
+            scoreString = "score: " + lastScore;*/
+        Settings.addScore(lastScore);
+        Settings.save(game.getFileIO());
     	game.setScreen(new PantallaGanar(game));
+    	
     }
     
     public void updateGameOver(){
@@ -100,6 +108,12 @@ public class PantallaJuego extends GLScreen {
               malo.choque = true;
     	  
     	  }
+    	  /*if (lastScore >= Settings.highscores[PantallaMision.mision-1])
+          scoreString = "new highscore: " + lastScore;
+      else
+          scoreString = "score: " + lastScore;*/
+      Settings.addScore(lastScore);
+      Settings.save(game.getFileIO());
     	game.setScreen(new PantallaPerder(game));
     	world.score = 0;    //Reinicializa el score
     	return;
@@ -118,7 +132,12 @@ public class PantallaJuego extends GLScreen {
                 
                 if (OverlapTester.pointInRectangle(pauseresumeBounds, touchPoint)) {
                     pauseresume=!pauseresume;
-                    Recursos.music.play();
+                    if(Settings.soundEnabled){
+                    	Recursos.music.play();
+                    }
+                    else{
+                    	Recursos.music.pause();
+                    }
                     state=GAME_RUNNING;
           
                 	}
@@ -268,6 +287,30 @@ public class PantallaJuego extends GLScreen {
             batcher.drawSprite(415, 34, 120, 45, Recursos.botones);
             for(int i = 0; i<world.John.vidas; i++){
             	batcher.drawSprite(250+14*i, 290, 14, 15, Recursos.vidaJohn);
+            }
+            if(world.jefeYa){
+            	switch (PantallaMision.mision){
+            	case 1 : 
+            		for(int i = 0; i<world.gripeJ.vidas; i++){
+            			batcher.drawSprite(240+14*i, 270, 14, 15, Recursos.vidaGripe);
+            		}
+            		break;
+            	case 2 : 
+            		for(int i = 0; i<world.gripeJ.vidas; i++){
+            			batcher.drawSprite(240+14*i, 270, 14, 15, Recursos.vidaGastritis);
+            		}
+            		break;
+            	case 3 : 
+            		for(int i = 0; i<world.gripeJ.vidas; i++){
+            			batcher.drawSprite(240+14*i, 270, 14, 15, Recursos.vidaVaricela);
+            		}
+            		break;
+            	case 4 : 
+            		for(int i = 0; i<world.gripeJ.vidas; i++){
+            			batcher.drawSprite(240+14*i, 270, 14, 15, Recursos.vidaRota);
+            		}
+            		break;
+            	}
             }
             float anchoScore = Recursos.font.glyphWidth * scoreString.length();
             Recursos.font.drawText(batcher, scoreString, 120 - anchoScore/2, 295);

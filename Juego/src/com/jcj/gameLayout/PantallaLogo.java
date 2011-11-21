@@ -40,7 +40,7 @@ public class PantallaLogo extends GLScreen {
 
     @Override
     public void resume() {
-    	bgImage = new Texture(glGame, "ganaste.png");    //aqui logo
+    	bgImage = new Texture(glGame, "pglogo.png");    //aqui logo
         bgRegion = new TextureRegion(bgImage, 0, 0, 480, 320);
 
     }
