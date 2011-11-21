@@ -75,7 +75,7 @@ public class Jefe extends DynamicGameObject {
 	        // Actualiza la posición del objeto.
 	        position.add(velocidad, velocidady);
 	        // Actualiza la posición del rectángulo que delimita el área del objeto
-	        bounds.lowerLeft.set(position).sub(bounds.width / 2, bounds.height / 2);
+	        bounds.lowerLeft.set(position).sub((bounds.width / 2) + 20, bounds.height / 2);   //Hay que checar este bounds
 	        //Actualiza el tiempo que el objeto lleva en el estado actual
 	        tiempoEstado +=deltaTime;
 	    }
