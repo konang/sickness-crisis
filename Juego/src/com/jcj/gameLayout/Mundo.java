@@ -37,7 +37,6 @@ public class Mundo {
     public static final Vector2 gravedad = new Vector2(0, -12);
 
     public final Heroe John;
-    public final Villano prueba0;
     public final Jefe gripeJ;
     public final List<Item> items;
     public final List<Villano> Gripe;
@@ -78,7 +77,6 @@ public class Mundo {
        
         
         this.score=0;
-        this.prueba0= new Villano ((ANCHO_MUNDO)+((int)(Math.random() * 480) + 50), ALTO_MUNDO/4);
         gripeJ.vidas = 20;     //Vidas Pruebas, checar ya bien cuantas queremos
         
     }
@@ -103,7 +101,6 @@ public class Mundo {
         
         updateJohn(deltaTime);
        	updateGripe(deltaTime);  
-        prueba0.update(deltaTime);
         updateBala(deltaTime);
         updateLluvia(deltaTime);
         if(score >= 500){
@@ -156,11 +153,6 @@ public class Mundo {
     	
     	for (int i = 0; i < Mejoral.size(); i++){
     		Balas bala = Mejoral.get(i);
-    		if (OverlapTester.overlapRectangles(bala.bounds, prueba0.bounds)) {
-    			prueba0.position.x = 500;
-    			Mejoral.get(i).position.x = 1200;
-    			score+=10;
-    		}
     		for(int j=0; j<lluvia.length; j++){
     			if (OverlapTester.overlapRectangles(bala.bounds, lluvia[j].bounds)) {
     				score+=5;
@@ -221,13 +213,6 @@ public class Mundo {
     
     private void updateGripe(float deltaTime){
 
-    	if(John.position.x>prueba0.position.x ){
-        	prueba0.velocidad=2;
-    		
-    	}
-        else{
-        	prueba0.velocidad=-2;
-        }
     	
         for (int i = 0; i < Gripe.size(); i++) {
             Villano malo = Gripe.get(i);
@@ -360,11 +345,6 @@ public class Mundo {
          * En esta sección se agrega el código para manejar las colisiones entre
          * objetos.
          */
-    	if (OverlapTester.overlapRectangles(John.bounds, prueba0.bounds)) {
-            prueba0.position.x = 550;
-            Recursos.playSound(Recursos.hitSound);
-            John.vidas--;
-    	}
     	for (int i = 0; i < Gripe.size(); i++) {
             Villano malo = Gripe.get(i);
             

@@ -198,69 +198,74 @@ public class RenderMundo {
     	int len = mundo.Mejoral.size();
         for (int i = 0; i < len; i++) {
         	Balas bala = mundo.Mejoral.get(i);
-        	switch (bala.estado){
-    		case Balas.ESTADO_DERECHA :
-    		//   Obtiene el cuadro actual de la animaci贸n
-    			keyFrame = Recursos.balaDerecha.getKeyFrame(mundo.John.tiempoEstado, Animation.ANIMATION_LOOPING);
-    		//    Dibuja el cuadro de la animaci贸n
+        	switch(PantallaMision.mision){
+        		case 1:keyFrame = Recursos.balaDerecha.getKeyFrame(mundo.John.tiempoEstado, Animation.ANIMATION_LOOPING);
+    		//    Dibuja el cuadro de la animaci髇
     			batcher.drawSprite(bala.position.x, bala.position.y, 11, 11, keyFrame);
     			break;
-    		case Balas.ESTADO_IZQUIERDA :
-        		//   Obtiene el cuadro actual de la animaci贸n
-        			keyFrame = Recursos.balaDerecha.getKeyFrame(mundo.John.tiempoEstado, Animation.ANIMATION_LOOPING);
-        		//    Dibuja el cuadro de la animaci贸n
-        			batcher.drawSprite(bala.position.x, bala.position.y, 11, 11, keyFrame);
-        			break;
+        		case 2:keyFrame = Recursos.balaJohnG.getKeyFrame(mundo.John.tiempoEstado, Animation.ANIMATION_LOOPING);
+        		//    Dibuja el cuadro de la animaci髇
+        			batcher.drawSprite(bala.position.x, bala.position.y, 12, 12, keyFrame);
+        		break;
+        		case 3:keyFrame = Recursos.balaJohnV.getKeyFrame(mundo.John.tiempoEstado, Animation.ANIMATION_LOOPING);
+        		//    Dibuja el cuadro de la animaci髇
+        			batcher.drawSprite(bala.position.x, bala.position.y, 22, 10, keyFrame);
+        		break;
+        		case 4:keyFrame = Recursos.balaJohnR.getKeyFrame(mundo.John.tiempoEstado, Animation.ANIMATION_LOOPING);
+        		//    Dibuja el cuadro de la animaci髇
+        			batcher.drawSprite(bala.position.x, bala.position.y, 29, 29, keyFrame);
+        		break;
+        			
+        	}
+        	
+    	
     	}
 
         }
-    }
     
     public void renderGripe(){ 			//Renderea al malo del nivel 1 gripe
+    	
+    	int tamanoancho=32;
+    	int tamanoalto=35;
 
-    	TextureRegion keyFrame;
-    	if(mundo.prueba0.estado==Villano.ESTADO_DERECHA){
-    		keyFrame = Recursos.villanoDerecha.getKeyFrame(mundo.prueba0.tiempoEstado, Animation.ANIMATION_LOOPING);
-    		mundo.prueba0.velocidad = -mundo.prueba0.velocidad;
-    		batcher.drawSprite(mundo.prueba0.position.x, mundo.prueba0.position.y, 32, 35, keyFrame);
-    	}
-    	else{
-        	keyFrame = Recursos.villanoIzquierda.getKeyFrame(mundo.prueba0.tiempoEstado, Animation.ANIMATION_LOOPING);
-        	mundo.prueba0.velocidad = -mundo.prueba0.velocidad;
-        	batcher.drawSprite(mundo.prueba0.position.x, mundo.prueba0.position.y, 32, 35, keyFrame);
-        }
-    	
-    	
-    	
+    	TextureRegion keyFrame;	
     	
     	int len = mundo.Gripe.size();
         for (int i = 0; i < len; i++) {
             Villano malo = mundo.Gripe.get(i);
+            if(malo.vidas==1){
+            	tamanoancho=24;
+            	tamanoalto=26;
+            }
+            else{
+            	tamanoancho=32;
+            	tamanoalto=35;
+            }
             switch (malo.estado){
     			case Villano.ESTADO_DERECHA :
     				//   Obtiene el cuadro actual de la animaci贸n
     				keyFrame = Recursos.villanoDerecha.getKeyFrame(malo.tiempoEstado, Animation.ANIMATION_LOOPING);
     				
     				//    Dibuja el cuadro de la animaci贸n
-    				batcher.drawSprite(malo.position.x, malo.position.y, 32, 35, keyFrame);
+    				batcher.drawSprite(malo.position.x, malo.position.y, tamanoancho, tamanoalto, keyFrame);
     			break;
     			case Villano.ESTADO_IZQUIERDA :
     				//   Obtiene el cuadro actual de la animaci贸n
     				keyFrame = Recursos.villanoIzquierda.getKeyFrame(malo.tiempoEstado, Animation.ANIMATION_LOOPING);
     				//    Dibuja el cuadro de la animaci贸n
-    				batcher.drawSprite(malo.position.x, malo.position.y, 32, 35, keyFrame);
+    				batcher.drawSprite(malo.position.x, malo.position.y, tamanoancho, tamanoalto, keyFrame);
                 break;
     			case Villano.SALTO_VILLANOIZQ :
     				//   Obtiene el cuadro actual de la animaci贸n
     				keyFrame = Recursos.villanoIzquierda.getKeyFrame(malo.tiempoEstado, Animation.ANIMATION_LOOPING);
     				//    Dibuja el cuadro de la animaci贸n
-    				batcher.drawSprite(malo.position.x, malo.position.y, 32, 35, keyFrame);
+    				batcher.drawSprite(malo.position.x, malo.position.y, tamanoancho, tamanoalto, keyFrame);
                 break;
     			case Villano.SALTO_VILLANODER :
     				//   Obtiene el cuadro actual de la animaci贸n
     				keyFrame = Recursos.villanoDerecha.getKeyFrame(malo.tiempoEstado, Animation.ANIMATION_LOOPING);
     				//    Dibuja el cuadro de la animaci贸n
-    				batcher.drawSprite(malo.position.x, malo.position.y, 32, 35, keyFrame);
+    				batcher.drawSprite(malo.position.x, malo.position.y, tamanoancho, tamanoalto, keyFrame);
                 break;
                 
             }
