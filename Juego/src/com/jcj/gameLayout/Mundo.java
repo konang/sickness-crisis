@@ -255,11 +255,11 @@ public class Mundo {
             	malo.velocidad = -2;
             }
             
-            if(PantallaMision.mision==2 && malo.estado==malo.ESTADO_DERECHA){
+            if(PantallaMision.mision==2||PantallaMision.mision == 4 && malo.estado==malo.ESTADO_DERECHA){
             		malo.estado = Villano.SALTO_VILLANODER;
             }
             
-            else if(PantallaMision.mision==2&&malo.estado==malo.ESTADO_IZQUIERDA){
+            else if(PantallaMision.mision==2||PantallaMision.mision==4 &&malo.estado==malo.ESTADO_IZQUIERDA){
             		malo.estado = Villano.SALTO_VILLANOIZQ;
             }
             
@@ -287,7 +287,7 @@ public class Mundo {
     	
     }
     private void updateLluvia(float deltaTime){
-    	if(PantallaMision.mision == 3){
+    	if(PantallaMision.mision == 3||PantallaMision.mision == 4){
     		for(int i=0; i<lluvia.length; i++) {
     			//Lluvia prueba = lluvia[i];
     			lluvia[i].update(deltaTime);
