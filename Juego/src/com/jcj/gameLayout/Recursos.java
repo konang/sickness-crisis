@@ -133,10 +133,10 @@ public class Recursos {
 								new TextureRegion(items, 606, 533, 21, 20),
 								new TextureRegion(items, 656, 533, 20, 19));
         balaGastritis = new Animation(0.4f,
-								new TextureRegion(items, 483, 568, 18, 32),
-								new TextureRegion(items, 516, 578, 31, 18),
-								new TextureRegion(items, 569, 571, 18, 32),
-								new TextureRegion(items, 604, 579, 31, 18));
+								new TextureRegion(items, 483, 568, 31, 32),
+								new TextureRegion(items, 516, 578, 31, 32),
+								new TextureRegion(items, 569, 571, 31, 32),
+								new TextureRegion(items, 604, 579, 31, 32));
         balaVaricela = new Animation(0.4f,
 								new TextureRegion(items, 667, 572, 35, 32),
 								new TextureRegion(items, 708, 570, 32, 36),
@@ -144,9 +144,9 @@ public class Recursos {
 								new TextureRegion(items, 790, 570, 32, 35));
         balaRota = new Animation(0.4f,
 								new TextureRegion(items, 725, 514, 42, 33),
-								new TextureRegion(items, 781, 514, 34, 32),
+								new TextureRegion(items, 781, 514, 42, 32),
 								new TextureRegion(items, 831, 519, 42, 33),
-								new TextureRegion(items, 891, 515, 34, 32));
+								new TextureRegion(items, 891, 515, 42, 32));
         balaGripe = new Animation(0.4f,
 								new TextureRegion(items, 552, 356, 34, 33),
 								new TextureRegion(items, 603, 359, 34, 34),

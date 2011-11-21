@@ -173,10 +173,24 @@ public class RenderMundo {
     
     public void renderBalaGripe(){
     	TextureRegion keyFrame;
-		//   Obtiene el cuadro actual de la animación
-		keyFrame = Recursos.balaGripe.getKeyFrame(mundo.BalaGripe.tiempoEstado, Animation.ANIMATION_LOOPING);
-		//    Dibuja el cuadro de la animación
-		batcher.drawSprite(mundo.BalaGripe.position.x, mundo.BalaGripe.position.y, 34, 34, keyFrame);
+    	switch(PantallaMision.mision){
+    		case 1 : 
+    			keyFrame = Recursos.balaGripe.getKeyFrame(mundo.BalaGripe.tiempoEstado, Animation.ANIMATION_LOOPING);
+    			batcher.drawSprite(mundo.BalaGripe.position.x, mundo.BalaGripe.position.y, 34, 34, keyFrame);
+    			break;
+    		case 2 : 
+    			keyFrame = Recursos.balaGastritis.getKeyFrame(mundo.BalaGripe.tiempoEstado, Animation.ANIMATION_LOOPING);
+    			batcher.drawSprite(mundo.BalaGripe.position.x, mundo.BalaGripe.position.y, 31, 32, keyFrame);
+    			break;
+    		case 3 : 
+    			keyFrame = Recursos.balaVaricela.getKeyFrame(mundo.BalaGripe.tiempoEstado, Animation.ANIMATION_LOOPING);
+    			batcher.drawSprite(mundo.BalaGripe.position.x, mundo.BalaGripe.position.y, 35, 36, keyFrame);
+    			break;
+    		case 4 : 
+    			keyFrame = Recursos.balaRota.getKeyFrame(mundo.BalaGripe.tiempoEstado, Animation.ANIMATION_LOOPING);
+    			batcher.drawSprite(mundo.BalaGripe.position.x, mundo.BalaGripe.position.y, 42, 33, keyFrame);
+    			break;
+    	}
     }
     
     public void renderBala1(){ 			//Renderea las balas del tipo 1

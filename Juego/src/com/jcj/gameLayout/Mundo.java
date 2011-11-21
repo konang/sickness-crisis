@@ -76,16 +76,11 @@ public class Mundo {
 
         
        
-        int randomPos = 0;							//Numero random de la posición de las balas
-        int randomOri = 0; 							//Numero random de en que lado de la pantalla está
-        	randomPos = (int)(Math.random() * 480) + 50;
-           	randomOri = (int)(Math.random() * 2) + 1;
         
         this.score=0;
         this.prueba0= new Villano ((ANCHO_MUNDO)+((int)(Math.random() * 480) + 50), ALTO_MUNDO/4);
         gripeJ.vidas = 20;     //Vidas Pruebas, checar ya bien cuantas queremos
         
-        //generateLevel();
     }
 
     /*
@@ -100,27 +95,6 @@ public class Mundo {
      * este ejemplo.
      */
     
-   public void generateLevel(){
-    	 int randomPos = 0;							//Numero random de la posición de las balas
-         int randomOri = 0; 							//Numero random de en que lado de la pantalla está
-         for (int i = 0; i > rG; i++){			//Crea a los malos en dicha posicion
-         	randomPos = (int)(Math.random() * 45) + 5;
-            	randomOri = (int)(Math.random() * 2) + 1;
-            	if(randomOri == 1){
-            		Villano grp = new Villano(ANCHO_MUNDO/4, ALTO_MUNDO/4);
-            		
-            		Gripe.add(grp);
-            		
-            	}
-            	else if (randomOri == 2){
-            		Villano grp = new Villano((ANCHO_MUNDO/4)* 3, ALTO_MUNDO/4);
-
-            		Gripe.add(grp);
-            	}
-            	
-         }
-    	
-    }
     
     public void update(float deltaTime) {
         /*
