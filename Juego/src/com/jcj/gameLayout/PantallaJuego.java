@@ -11,8 +11,7 @@ import com.jcj.framework.math.Vector2;
 import com.jcj.gameLayout.Mundo;
 import com.jcj.gameLayout.RenderMundo;
 import com.jcj.gameLayout.Mundo.MundoListener;
-import com.jcj.gameLayout.Settings;
-
+import com.jcj.jumper.Assets;
 
 
 
@@ -92,14 +91,7 @@ public class PantallaJuego extends GLScreen {
     }
     
     public void updateLevelEnd(){
-    	/*if (lastScore >= Settings.highscores[PantallaMision.mision-1])
-            scoreString = "new highscore: " + lastScore;
-        else
-            scoreString = "score: " + lastScore;*/
-        Settings.addScore(lastScore);
-        Settings.save(game.getFileIO());
     	game.setScreen(new PantallaGanar(game));
-    	
     }
     
     public void updateGameOver(){
@@ -108,12 +100,6 @@ public class PantallaJuego extends GLScreen {
               malo.choque = true;
     	  
     	  }
-    	  /*if (lastScore >= Settings.highscores[PantallaMision.mision-1])
-          scoreString = "new highscore: " + lastScore;
-      else
-          scoreString = "score: " + lastScore;*/
-      Settings.addScore(lastScore);
-      Settings.save(game.getFileIO());
     	game.setScreen(new PantallaPerder(game));
     	world.score = 0;    //Reinicializa el score
     	return;
@@ -132,12 +118,7 @@ public class PantallaJuego extends GLScreen {
                 
                 if (OverlapTester.pointInRectangle(pauseresumeBounds, touchPoint)) {
                     pauseresume=!pauseresume;
-                    if(Settings.soundEnabled){
-                    	Recursos.music.play();
-                    }
-                    else{
-                    	Recursos.music.pause();
-                    }
+                    Recursos.music.play();
                     state=GAME_RUNNING;
           
                 	}
@@ -286,7 +267,7 @@ public class PantallaJuego extends GLScreen {
             batcher.drawSprite(105, 30, 49, 32, Recursos.dpadderecha);
             batcher.drawSprite(415, 34, 120, 45, Recursos.botones);
             for(int i = 0; i<world.John.vidas; i++){
-            	batcher.drawSprite(250+14*i, 290, 14, 15, Recursos.vidaJohn);
+            	batcher.drawSprite(250+14*i, 310, 19, 20, Recursos.vidaJohn);
             }
             if(world.jefeYa){
             	switch (PantallaMision.mision){
