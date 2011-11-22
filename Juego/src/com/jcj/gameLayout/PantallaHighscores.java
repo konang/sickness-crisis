@@ -16,6 +16,13 @@ import com.jcj.gameLayout.Settings;
 import java.util.List;
 import javax.microedition.khronos.opengles.GL10;
 
+/**
+ * Clase PantallaHighscores extiende a la clase GLScreen
+ * Clase donde se crea la pantalla para visualizar los puntajes salvados de cada misión
+ *
+ * @author jugandoconjava basado en el libro Beginning Android Games de Mario Zechner
+ */
+
 public class PantallaHighscores extends GLScreen {
     Camera2D guiCam;
     SpriteBatcher batcher;
@@ -40,6 +47,14 @@ public class PantallaHighscores extends GLScreen {
         }
     }
 
+    /**
+     * Método update
+     * Metodo que actualiza las acciones realizadas en la pantalla
+     * 
+     * @param float deltaTime indica el tiempo transcurrido del sistema desde la
+     * última vez que se actualizo
+     *
+     */
     @Override
     public void update(float deltaTime) {
         List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
@@ -59,6 +74,15 @@ public class PantallaHighscores extends GLScreen {
         }
     }
 
+    /**
+     * Método present
+     * Método que maneja el batcher y la camara, donde se pintan las texturas
+     * 
+     * @param float deltaTime indica el tiempo transcurrido del sistema desde la
+     * última vez que se actualizo
+     *
+     */
+    
     @Override
     public void present(float deltaTime) {
         GL10 gl = glGraphics.getGL();
@@ -85,18 +109,41 @@ public class PantallaHighscores extends GLScreen {
 
         gl.glDisable(GL10.GL_BLEND);
     }
+    
+    /**
+     * Método resume
+     * Metodo que repinta el fondo o background
+     * 
+     * @param float deltaTime indica el tiempo transcurrido del sistema desde la
+     * última vez que se actualizo
+     *
+     */
 
     @Override
     public void resume() {
     	backgroundHi = new Texture(glGame, "backgroundhighscore.png");
         backgroundHigh = new TextureRegion(backgroundHi, 0, 0, 480, 320);
     }
+    
+    /**
+     * Método pause
+     * Método que pause y deja de actualizar
+     * 
+     */
 
     @Override
     public void pause() {
 
     }
 
+    /**
+     * Método dispose
+     * Método que libera la memoria del background
+     * 
+     * @param float deltaTime indica el tiempo transcurrido del sistema desde la
+     * última vez que se actualizo
+     *
+     */
     @Override
     public void dispose() {
     	backgroundHi.dispose();

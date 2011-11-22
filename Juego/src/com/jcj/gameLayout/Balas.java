@@ -2,35 +2,58 @@ package com.jcj.gameLayout;
 
 import com.jcj.gd2d.DynamicGameObject;
 
+/**
+ * Clase Balas extiende a la clase DynamicGameObject.
+ * La clase Balas define el modelo del personaje del juego estableciendo sus
+ * propiedades como su estado, su velocidad de movimiento, sus dimensiones y su
+ * posici髇, entre otras. La clase Heroe hereda de la clase padre atributos
+ * de velocidad, aceleraci髇, posici贸n y un rectangulo que delimita el 羠ea del objeto.
+ *
+ * @author Bacon Rocket Studios basado en el libro Beginning Android Games de Mario Zechner
+ */
+
 public class Balas extends DynamicGameObject {
 
-	 public static final int ESTADO_DERECHA = 0;                 //Estado del objeto
-	    public static final int ESTADO_IZQUIERDA = 1;                 //Estado del objeto
-	    public static final float SALTO_HEROE = 10;           //Velocidad vertical
-	    public static final float VELOCIDAD_HEROE = 20;       //Velocidad horizontal
-	    public static final float ANCHO_HEROE = 11f;         //Ancho del objeto
-	    public static final float ALTO_HEROE = 11f;          //Alto del objeto
-	    int estado;                                           //Guarda el estado actual del personaje
-	    float tiempoEstado;                                    // Indica el tiempo que el personaje lleva en dicho estado
-	    float velocidad=0;
-	    boolean choque = false;
-	    public int cantidad=0;
+	 public static final int ESTADO_DERECHA = 0;                //Estado del objeto
+	    public static final int ESTADO_IZQUIERDA = 1;           //Estado del objeto
+	    public static final float VELOCIDAD_HEROE = 20;       	//Velocidad horizontal
+	    public static final float ANCHO_HEROE = 11f;        	//Ancho del objeto
+	    public static final float ALTO_HEROE = 11f;          	//Alto del objeto
+	    int estado;                                           	//Guarda el estado actual del personaje
+	    float tiempoEstado;                                    	//Indica el tiempo que el personaje lleva en dicho estado
+	    float velocidad=0;										//Velocidad inicial
+	    boolean choque = false;									//Varialbe que verifica el choque
+	    
 	public Balas(float x, float y) {
         super(x, y, ANCHO_HEROE, ALTO_HEROE);
-        /*
-         * En esta secci贸n agregamos el c贸digo para determinar el estado inicial
-         * del objeto.
-         */
+        /**
+        * En el constructor de clase bala definimos el estado inicial del objeto asi como tambi閚 llamamos
+        * al constructor de la clase padre para establecerlo en su posici髇 incial y
+        * estableciendo su ancho y alto.
+        * El constructor de la clase padre toma los valores de la posici髇 y las dimensiones
+        * para crear un objeto de la clase Rectangulo que delimita la region de nuestro objeto
+        * y el cual utilizamos en el manejo de colisiones. Los puntos de la posici髇 corresponden
+        * al centro del objeto.
+        * 
+        * @param x es el valor de la posici髇 en x donde se crea
+        * @param y es el valor de la posici髇 en y donde se crea
+        * 
+        * @return no regresa nada
+        */
         estado = ESTADO_DERECHA;
         tiempoEstado = 0;
         
     }
 	
 	 public void update(float deltaTime) {
-	        /*
-	         * En esta secci贸n agregamos el c贸digo para actualizar el objeto
+		 /**
+	         * 
+	         * Este metodo sirve para actualizar la posici髇 del objeto
+	         * 
+	         * @param deltaTime es el valor que utilizar para actualizar 
+	         * 
+	         * @return no regresa nada
 	         */
-	        // Actualiza la posici贸n del objeto.
 		 	
 	        position.add(velocidad, 0);
 	        // Actualiza |la posici贸n del rect谩ngulo que delimita el 谩rea del objeto

@@ -2,7 +2,6 @@ package com.jcj.gameLayout;
 
 import com.jcj.framework.math.OverlapTester;
 import com.jcj.framework.math.Vector2;
-import com.jcj.jumper.World;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -11,7 +10,7 @@ import java.util.List;
 
 /**
  * Clase Mundo
- * La clase Mundo se encarga de actualizar el mundo de juego as√≠ como tambi√©n del
+ * La clase Mundo se encarga de actualizar el mundo de juego asÌ cÛmo tambiÈn del
  * manejo de las colisiones y si el juego ha terminado.
  *
  * @author jugandoconjava basado en el libro Beginning Android Games de Mario Zechner
@@ -19,16 +18,15 @@ import java.util.List;
 public class Mundo {
     public interface MundoListener {
         /*
-         * En esta secci√≥n definimos los eventos que el listener va a manejar
-         * y las acciones que se llevar√°n acabo
+         * En esta secciÛn definimos los eventos que el listener va a manejar
+         * y las acciones que se llevar·n acabo
          */
-        //Ejemplo:
-        //public void salto();
+        
     }
     
     /*
-     * En esta secci√≥n definimos las dimensiones del mundo asi como tambi√©n todos
-     * los elementos que lo conformar√°n. Es recomendable agregar tambi√©n el manejo
+     * En esta secci√≥n definimos las dimensiones del mundo asi como tambiÈn todos
+     * los elementos que lo conformarn. Es recomendable agregar tambi√©n el manejo
      * de estados para el mundo. El mundo de juego no esta basado en pixeles si no 
      * en sus propias unidades.
      */
@@ -38,7 +36,6 @@ public class Mundo {
 
     public final Heroe John;
     public final Jefe gripeJ;
-    public final List<Item> items;
     public final List<Villano> Gripe;
     public Lluvia[] lluvia = new Lluvia[6];
     public final MundoListener listener;
@@ -49,9 +46,9 @@ public class Mundo {
     public boolean gameOver=false;
     public boolean jefeYa= false;
     
-    /*
-     * M√©todo constructor de la clase Mundo.
-     * En este m√©todo creamos los elementos que componen al mundo de juego e
+    /**
+     * MÈtodo constructor de la clase Mundo.
+     * En este mÈtodo creamos los elementos que componen al mundo de juego e
      * inicializamos todo lo que se tenga que inicializar.
      *
      * @param MundoListener listener se encarga de manejar los eventos del mundo
@@ -66,8 +63,6 @@ public class Mundo {
     	this.Mejoral =new ArrayList<Balas>();
         this.John = new Heroe(ANCHO_MUNDO/2, ALTO_MUNDO/4);
         this.gripeJ = new Jefe (0 + Jefe.ANCHO_JEFE/2, ALTO_MUNDO);  //ALTO_MUNDO/4 + Jefe.ALTO_JEFE/4 + 5
-        this.items = new ArrayList<Item>();
-        //Agregar el c√≥digo para generar y llenar la lista de items.
         this.listener = listener;
         this.Gripe = new ArrayList<Villano>();
         this.BalaGripe = new Balas(-100, -100);
@@ -81,16 +76,14 @@ public class Mundo {
         
     }
 
-    /*
-     * M√©todo update.
-     * En este m√©todo se actualizan todos los elementos del mundo de juego y se
-     * mandan a llamar los m√©todos encargados de checar colisiones y si el juego
+    /**
+     * MÈtodo update.
+     * En este mÈtodo se actualizan todos los elementos del mundo de juego y se
+     * mandan a llamar los mÈtodos encargados de checar colisiones y si el juego
      * ha finalizado.
      *
-     * @param float deltaTime es el tiempo que ha transcurrido desde la √∫ltima vez
+     * @param float deltaTime es el tiempo que ha transcurrido desde la ˙ltima vez
      * que el juego fue actualizado.
-     * @param float accelX es el valor de la lectura del aceler√≥mtetro en x para
-     * este ejemplo.
      */
     
     
@@ -107,20 +100,20 @@ public class Mundo {
         	updateGripeJ(deltaTime);
         	jefeYa=true;
         	gripeJ.position.set(0 + Jefe.ANCHO_JEFE/2,ALTO_MUNDO/4 + Jefe.ALTO_JEFE/4 + 5);
-        	updateBalaGripe(deltaTime);
-        }
-        
 
-        int len = items.size();
-        for (int i = 0; i < len; i++) {
-            Item item = items.get(i);
-            item.update(deltaTime);
         }
         checkCollisions();
-        checkGameOver();
+
         
     }
     
+    /**
+     * MÈtodo updateJohn.
+     * En este mÈtodo se actualizan todos los elementos del objeto de la clase Heroe
+     *
+     * @param float deltaTime es el tiempo que ha transcurrido desde la ˙ltima vez
+     * que el juego fue actualizado.
+     */
     public void updateJohn(float deltaTime){
     	
     	
@@ -145,9 +138,12 @@ public class Mundo {
     	John.update(deltaTime);
     }
 
-    /*
-     * M√©todo checkCollisions
-     * En este m√©todo se manejan las colisiones entre objetos.
+    /**
+     * MÈtodo updateBala.
+     * En este mÈtodo se actualizan todos los elementos del objeto de la clase Bala
+     *
+     * @param float deltaTime es el tiempo que ha transcurrido desde la ˙ltima vez
+     * que el juego fue actualizado.
      */
     private void updateBala(float deltaTime){
     	
@@ -212,6 +208,14 @@ public class Mundo {
 		}
     	
     }
+    /**
+     * MÈtodo updateGripe.
+     * En este mÈtodo se actualizan todos los elementos del objeto de la clase Villano
+     *
+     * @param float deltaTime es el tiempo que ha transcurrido desde la ˙ltima vez
+     * que el juego fue actualizado.
+     */
+    
     
     private void updateGripe(float deltaTime){
 
@@ -256,6 +260,14 @@ public class Mundo {
         }
     	
     }
+    
+    /**
+     * MÈtodo updateLluvia.
+     * En este mÈtodo se actualizan todos los elementos del objeto de la clase Lluvia
+     *
+     * @param float deltaTime es el tiempo que ha transcurrido desde la ˙ltima vez
+     * que el juego fue actualizado.
+     */
     private void updateLluvia(float deltaTime){
     	if(PantallaMision.mision == 3||PantallaMision.mision == 4){
     		for(int i=0; i<lluvia.length; i++) {
@@ -279,34 +291,14 @@ public class Mundo {
     	
     }
     
+    /**
+     * MÈtodo updateGripeJ
+     * En este mÈtodo se actualizan todos los elementos del objeto de la clase Jefe
+     *
+     * @param float deltaTime es el tiempo que ha transcurrido desde la ˙ltima vez
+     * que el juego fue actualizado.
+     */
 
-    private void updateBalaGripe(float deltaTime){
-    	if (gripeJ.estado==Jefe.ESTADO_DERECHA && (BalaGripe.position.x > ANCHO_MUNDO || BalaGripe.position.x < 0)){
-    		BalaGripe.velocidad = 2;
-    		BalaGripe.position.x = gripeJ.position.x;
-    		BalaGripe.position.y = John.position.y-10;
-    	}
-    	if (gripeJ.estado==Jefe.ESTADO_IZQUIERDA && (BalaGripe.position.x > ANCHO_MUNDO || BalaGripe.position.x < 0)){
-    		BalaGripe.velocidad = -2;
-    		BalaGripe.position.x = gripeJ.position.x;
-    		BalaGripe.position.y = John.position.y-10;
-    	}
-
-    	if (OverlapTester.overlapRectangles(John.bounds, BalaGripe.bounds)) {
-            BalaGripe.position.y = 500;
-            Recursos.playSound(Recursos.hitSound);
-            John.vidas--;
-    	}
-    	
-    	for (int i = 0; i < Mejoral.size(); i++){
-        	Balas bala = Mejoral.get(i);
-        	if (OverlapTester.overlapRectangles(bala.bounds, BalaGripe.bounds)) {
-        		BalaGripe.position.x = gripeJ.position.x;
-        	 }
-    	}
-    	BalaGripe.update(deltaTime);
-    	
-    }
     
    
     private void updateGripeJ(float deltaTime){
@@ -315,7 +307,11 @@ public class Mundo {
     	gripeJ.velocidad= 0;
     	gripeJ.update(deltaTime);
     }
-    
+    /**
+     * MÈtodo checkCollisions.
+     * En esta secciÛn se agrega el cÛdigo para manejar las colisiones entre
+     * objetos.
+     */
     private void checkCollisions() {
         /*
          * En esta secci√≥n se agrega el c√≥digo para manejar las colisiones entre
@@ -338,31 +334,9 @@ public class Mundo {
     			i--;
     		}
     	}
-    	
-        int len = items.size();
-        for (int i = 0; i < len; i++) {
-            Item item = items.get(i);
-            if (OverlapTester.overlapRectangles(John.bounds, item.bounds)) {
-                  /*
-                   * En esta secci√≥n se agrega el c√≥digo de las acciones a tomar
-                   * cuando existe una colisi√≥n entre los objetos.
-                   */
-
-          }
-        }
         
     }
 
-    /*
-     * M√©todo checkGameOver
-     * En este m√©todo verificamos si el juego ha terminado por que el jugador perdio.
-     */
-    private void checkGameOver() {
-        /*
-         * En esta secci√≥n se agrega el c√≥digo para verificar la condici√≥n
-         * para que el juego termine.
-         */
-        
-    }
+    
 
 }

@@ -13,6 +13,13 @@ import com.jcj.framework.math.Vector2;
 import java.util.List;
 import javax.microedition.khronos.opengles.GL10;
 
+/**
+ * Clase PantallaInstrucciones extiende a la clase GLScreen
+ * Clase donde se crea la pantalla para visualizar la informacion de cada misión
+ *
+ * @author jugandoconjava basado en el libro Beginning Android Games de Mario Zechner
+ */
+
 public class PantallaInstrucciones extends GLScreen {
     Camera2D guiCam;
     SpriteBatcher batcher;
