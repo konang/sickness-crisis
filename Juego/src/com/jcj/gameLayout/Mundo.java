@@ -103,7 +103,7 @@ public class Mundo {
        	updateGripe(deltaTime);  
         updateBala(deltaTime);
         updateLluvia(deltaTime);
-        if(score >= 500){
+        if(score >= 500){                   // Le movi al score para llegar al jefe
         	updateGripeJ(deltaTime);
         	jefeYa=true;
         	gripeJ.position.set(0 + Jefe.ANCHO_JEFE/2,ALTO_MUNDO/4 + Jefe.ALTO_JEFE/4 + 5);
@@ -177,7 +177,7 @@ public class Mundo {
     			if (OverlapTester.overlapRectangles(bala.bounds, malo.bounds)) {
     				malo.vidas--;
     				bala.choque=true;
-    				score+=10;
+    				score+=5;
     			}
 
     		}
@@ -206,7 +206,9 @@ public class Mundo {
 			PantallaJuego.state= PantallaJuego.GAME_LEVEL_END;
 			jefeYa= false;
 			score +=500;
-			score *= John.vidas;
+			PantallaGanar.vidas2 = "" + John.vidas;
+			PantallaGanar.score2 = "" + score;
+			PantallaGanar.score3 = "" + John.vidas * score;
 		}
     	
     }

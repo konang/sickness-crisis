@@ -11,7 +11,7 @@ import com.jcj.framework.math.Vector2;
 import com.jcj.gameLayout.Mundo;
 import com.jcj.gameLayout.RenderMundo;
 import com.jcj.gameLayout.Mundo.MundoListener;
-import com.jcj.jumper.Assets;
+
 
 
 
@@ -91,6 +91,8 @@ public class PantallaJuego extends GLScreen {
     }
     
     public void updateLevelEnd(){
+    	Settings.addScore(lastScore * world.John.vidas);
+        Settings.save(game.getFileIO());
     	game.setScreen(new PantallaGanar(game));
     }
     
@@ -100,7 +102,9 @@ public class PantallaJuego extends GLScreen {
               malo.choque = true;
     	  
     	  }
-    	game.setScreen(new PantallaPerder(game));
+    	  Settings.addScore(lastScore * world.John.vidas);
+          Settings.save(game.getFileIO());
+    	  game.setScreen(new PantallaPerder(game));
     	world.score = 0;    //Reinicializa el score
     	return;
     }
@@ -236,7 +240,7 @@ public class PantallaJuego extends GLScreen {
             
         }
         
-        if(world.John.vidas<0){
+        if(world.John.vidas<2){
         	state=GAME_OVER;
         }
         
@@ -246,7 +250,7 @@ public class PantallaJuego extends GLScreen {
         
         world.update(deltaTime);
         if (world.score != lastScore) {
-            lastScore = world.score + 10;    //Modifique para que el last score se mantenga a traves de las jugadas. Tambien le puse el 10 para que no haya colision de scores.
+            lastScore = world.score;    //Modifique para que el last score se mantenga a traves de las jugadas. Tambien le puse el 10 para que no haya colision de scores.
             scoreString = "" + "Puntaje: " + lastScore;  //Checar porque no estoy seguro que se mantenga 
         }
       }

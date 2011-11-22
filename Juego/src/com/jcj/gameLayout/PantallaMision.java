@@ -37,8 +37,8 @@ public class PantallaMision extends GLScreen {
         misionunoBounds = new Rectangle(16, 191, 88, 60);
         regresarMenuPrincipal = new Rectangle(360, 0, 120, 41);
         misiondosBounds = new Rectangle(16,125,88,60);
-        misiontresBounds = new Rectangle(435,191,88,60);
-        misioncuatroBounds = new Rectangle(435,125,88,60);
+        misiontresBounds = new Rectangle(385,191,88,60);
+        misioncuatroBounds = new Rectangle(385,125,88,60);
         
         touchPoint = new Vector2();
     }

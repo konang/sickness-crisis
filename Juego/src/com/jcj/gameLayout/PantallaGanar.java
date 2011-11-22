@@ -19,8 +19,10 @@ public class PantallaGanar extends GLScreen {
     Texture bgImage;
     TextureRegion bgRegion;
     Rectangle otraMision;
-  
+    static String vidas2;
+    static String score2;
     Vector2 touchPoint;
+    static String score3;
 
     public PantallaGanar(Game game) {
         super(game);
@@ -87,6 +89,15 @@ public class PantallaGanar extends GLScreen {
         batcher.beginBatch(bgImage);
             batcher.drawSprite(240, 160, 480, 320, bgRegion);
         batcher.endBatch();
+        batcher.beginBatch(Recursos.items);
+        	float anchoScore2 = Recursos.font.glyphWidth * score2.length();
+            Recursos.font.drawText(batcher, score2, 330 + anchoScore2/2, 298);
+            float anchoScore3 = Recursos.font.glyphWidth * score3.length();
+            Recursos.font.drawText(batcher, score3, 330 + anchoScore3/2, 240);
+            float anchoVidas2 = Recursos.font.glyphWidth * vidas2.length();
+            Recursos.font.drawText(batcher, vidas2, 405 + anchoVidas2/2, 270);
+         batcher.endBatch();
+        
 
         gl.glEnable(GL10.GL_BLEND);
         gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
