@@ -36,8 +36,8 @@ public class PantallaInstrucciones extends GLScreen {
         super(game);
         guiCam = new Camera2D(glGraphics, 480, 320);
         batcher = new SpriteBatcher(glGraphics, 100);
-        flechaderechaBounds= new Rectangle(435, 40, 30, 25);
-        flechaizquierdaBounds= new Rectangle(15, 40 ,30 ,25);
+        flechaderechaBounds= new Rectangle(435, 40, 85, 85);
+        flechaizquierdaBounds= new Rectangle(15, 40 ,85 ,85);
         
         
         
