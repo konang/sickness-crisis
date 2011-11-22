@@ -4,7 +4,7 @@ import com.jcj.framework.math.OverlapTester;
 import com.jcj.framework.math.Vector2;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
+
 import java.util.List;
 
 
@@ -13,7 +13,7 @@ import java.util.List;
  * La clase Mundo se encarga de actualizar el mundo de juego así cómo también del
  * manejo de las colisiones y si el juego ha terminado.
  *
- * @author jugandoconjava basado en el libro Beginning Android Games de Mario Zechner
+ * @author Bacon Rocket Studios basado en el libro Beginning Android Games de Mario Zechner
  */
 public class Mundo {
     public interface MundoListener {
@@ -96,7 +96,9 @@ public class Mundo {
        	updateGripe(deltaTime);  
         updateBala(deltaTime);
         updateLluvia(deltaTime);
-        if(score >= 500){                   // Le movi al score para llegar al jefe
+        updateBalaGripe(deltaTime);
+        
+        if(score >= 5){                   // Le movi al score para llegar al jefe
         	updateGripeJ(deltaTime);
         	jefeYa=true;
         	gripeJ.position.set(0 + Jefe.ANCHO_JEFE/2,ALTO_MUNDO/4 + Jefe.ALTO_JEFE/4 + 5);
@@ -137,6 +139,34 @@ public class Mundo {
     	
     	John.update(deltaTime);
     }
+    private void updateBalaGripe(float deltaTime){
+    	if (gripeJ.estado==Jefe.ESTADO_DERECHA && (BalaGripe.position.x > ANCHO_MUNDO || BalaGripe.position.x < 0)){
+    	BalaGripe.velocidad = 2;
+    	BalaGripe.position.x = gripeJ.position.x;
+    	BalaGripe.position.y = John.position.y-10;
+    	}
+    	if (gripeJ.estado==Jefe.ESTADO_IZQUIERDA && (BalaGripe.position.x > ANCHO_MUNDO || BalaGripe.position.x < 0)){
+    	BalaGripe.velocidad = -2;
+    	BalaGripe.position.x = gripeJ.position.x;
+    	BalaGripe.position.y = John.position.y-10;
+    	}
+
+    	if (OverlapTester.overlapRectangles(John.bounds, BalaGripe.bounds)) {
+    	BalaGripe.position.y = 500;
+    	Recursos.playSound(Recursos.hitSound);
+    	John.vidas--;
+    	}
+
+    	for (int i = 0; i < Mejoral.size(); i++){
+    	Balas bala = Mejoral.get(i);
+    	if (OverlapTester.overlapRectangles(bala.bounds, BalaGripe.bounds)) {
+    	BalaGripe.position.x = gripeJ.position.x;
+    	bala.choque = true;
+    	}
+    	}
+    	BalaGripe.update(deltaTime);
+
+    	}
 
     /**
      * Método updateBala.

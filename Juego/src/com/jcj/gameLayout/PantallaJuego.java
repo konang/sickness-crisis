@@ -21,6 +21,12 @@ import java.util.Random;
 import javax.microedition.khronos.opengles.GL10;
 
 
+/**
+ * Clase PantallaInstrucciones extiende a la clase GLScreen
+ * Clase donde se crea la pantalla para jugar donde se manejan las acciones del juego 
+ *
+ * @author Bacon Rocket Studios basado en el libro Beginning Android Games de Mario Zechner
+ */
 
 public class PantallaJuego extends GLScreen {
 	
@@ -68,6 +74,15 @@ public class PantallaJuego extends GLScreen {
         scoreString = "Puntaje: 0";
     }
     
+    
+    /**
+     * Método update
+     * Metodo que actualiza y verifica el estado del juego
+     * 
+     * @param float deltaTime indica el tiempo transcurrido del sistema desde la
+     * última vez que se actualizo
+     *
+     */
     @Override
     public void update(float deltaTime) {
     	if (deltaTime > 0.1f)
@@ -90,11 +105,24 @@ public class PantallaJuego extends GLScreen {
     	}
     }
     
+    /**
+     * Método updateLevelEnd
+     * Metodo que verifica que se acabo el nivel por haber vencido al jefe y salva el puntaje
+     *
+     *
+     */
     public void updateLevelEnd(){
     	Settings.addScore(lastScore * world.John.vidas);
         Settings.save(game.getFileIO());
     	game.setScreen(new PantallaGanar(game));
     }
+    
+    /**
+     * Método updateGameOver
+     * Metodo que verifica que se acabo el nivel por haber perdido y salva el puntaje
+     *
+     *
+     */
     
     public void updateGameOver(){
     	  for (int i = 0; i < world.Gripe.size(); i++) {
@@ -108,6 +136,15 @@ public class PantallaJuego extends GLScreen {
     	world.score = 0;    //Reinicializa el score
     	return;
     }
+    
+    /**
+     * Método updatePaused
+     * Metodo detiene las animaciones y para el juego para que el usuario pueda hacer
+     * algo mas 
+     *
+     *
+     */
+    
     
     public void updatePaused(){
     	List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
@@ -135,6 +172,15 @@ public class PantallaJuego extends GLScreen {
         
         	
     }
+    
+    /**
+     * Método updateRunning
+     * Metodo que actualiza las acciones realizadas en la pantalla
+     * 
+     * @param float deltaTime indica el tiempo transcurrido del sistema desde la
+     * última vez que se actualizo
+     *
+     */
     	
     public void updateRunning(float deltaTime){
     	List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
@@ -254,6 +300,15 @@ public class PantallaJuego extends GLScreen {
             scoreString = "" + "Puntaje: " + lastScore;  //Checar porque no estoy seguro que se mantenga 
         }
       }
+    
+    /**
+     * Método present
+     * Método que maneja el batcher y la camara, donde se pintan las texturas
+     * 
+     * @param float deltaTime indica el tiempo transcurrido del sistema desde la
+     * última vez que se actualizo
+     *
+     */
 
     @Override
     public void present(float deltaTime) {
@@ -312,15 +367,33 @@ public class PantallaJuego extends GLScreen {
         gl.glDisable(GL10.GL_BLEND);
     }
 
+    /**
+     * Método pause
+     * Método que pause y deja de actualizar
+     * 
+     */
     @Override
     public void pause() {
         Settings.save(game.getFileIO());
     }
 
+    
+    /**
+     * Método resume
+     * Metodo que repinta el fondo o background
+     * 
+     *
+     */
     @Override
     public void resume() {
 
     }
+    
+    
+    /**
+     * Método dispose
+     * Método que libera la memoria del background
+     */
 
     @Override
     public void dispose() {

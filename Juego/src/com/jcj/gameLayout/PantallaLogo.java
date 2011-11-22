@@ -13,6 +13,13 @@ import com.jcj.framework.math.Vector2;
 import java.util.List;
 import javax.microedition.khronos.opengles.GL10;
 
+
+/**
+ * Clase PantallaInstrucciones extiende a la clase GLScreen
+ * Clase donde se crea la pantalla en la que se muestra el logo de los creadores
+ *
+ * @author Bacon Rocket Studios basado en el libro Beginning Android Games de Mario Zechner
+ */
 public class PantallaLogo extends GLScreen {
     Camera2D guiCam;
     SpriteBatcher batcher;
@@ -33,11 +40,22 @@ public class PantallaLogo extends GLScreen {
         touchPoint = new Vector2();
     }
     
+    /**
+     * Método pause
+     * Método que pause y deja de actualizar
+     * 
+     */
     @Override
     public void pause() {
         Settings.save(game.getFileIO());
     }
 
+    /**
+     * Método resume
+     * Metodo que repinta el fondo o background
+     * 
+     *
+     */
     @Override
     public void resume() {
     	bgImage = new Texture(glGame, "bglogo.png");    //aqui logo
@@ -45,12 +63,25 @@ public class PantallaLogo extends GLScreen {
 
     }
 
+    /**
+     * Método dispose
+     * Método que libera la memoria del background
+     */
+
     @Override
     public void dispose() {
     	bgImage.dispose();
         
     }
     
+    /**
+     * Método update
+     * Metodo que actualiza las acciones realizadas en la pantalla
+     * 
+     * @param float deltaTime indica el tiempo transcurrido del sistema desde la
+     * última vez que se actualizo
+     *
+     */
     
     @Override
     public void update(float deltaTime) {
@@ -60,6 +91,15 @@ public class PantallaLogo extends GLScreen {
       }
     	  contador++;
     }
+    
+    /**
+     * Método present
+     * Método que maneja el batcher y la camara, donde se pintan las texturas
+     * 
+     * @param float deltaTime indica el tiempo transcurrido del sistema desde la
+     * última vez que se actualizo
+     *
+     */
 
     @Override
     public void present(float deltaTime) {

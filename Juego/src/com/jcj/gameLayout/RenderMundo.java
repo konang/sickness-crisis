@@ -12,8 +12,8 @@ import javax.microedition.khronos.opengles.GL10;
  * Clase RenderMundo
  * En esta clase nos encargamos de dibujar en pantalla el mundo de juego y sus
  * elementos.
+ * @author Bacon Rocket Studios basado en el libro Beginning Android Games de Mario Zechner
  * 
- * @author jugandoconjava basado en el libro Beginning Android Games de Mario Zechner
  */
 public class RenderMundo {
     
@@ -68,7 +68,7 @@ public class RenderMundo {
     SpriteBatcher batcher;
     Mundo mundo;
 
-    /*
+    /**
      * M√©todo constructor de la clase RenderMundo.
      * En este m√©todo se crean los miembros que nos ayudar√°n a desplegar el mundo
      * de juego.
@@ -84,6 +84,12 @@ public class RenderMundo {
         this.batcher = batcher;
     }
 
+    /**
+     * MÈtodo render
+     * Metodo donde se juntan todas las imagenes e animaciones a pintar
+     * 
+     *
+     */
     public void render() {
         /*
          * En esta secci√≥n actualizamos la posici√≥n de la c√°mara del mundo y
@@ -139,6 +145,12 @@ public class RenderMundo {
 
     }
     
+    /**
+     * MÈtodo renderJohn
+     * Metodo que con el batch junta todas las animaciones del Heroe para pintar
+     * 
+     *
+     */
     public void renderJohn(){
     	TextureRegion keyFrame;
     	switch (mundo.John.estado){
@@ -171,6 +183,12 @@ public class RenderMundo {
 
     }
     
+    /**
+     * MÈtodo renderBalaGripe
+     * Metodo que con el batch junta todas las animaciones de la Bala del Jefe para pintar
+     * 
+     *
+     */
     public void renderBalaGripe(){
     	TextureRegion keyFrame;
     	switch(PantallaMision.mision){
@@ -193,6 +211,12 @@ public class RenderMundo {
     	}
     }
     
+    /**
+     * MÈtodo renderBala1
+     * Metodo que con el batch junta todas las animaciones de la Bala del Heroe para pintar
+     * 
+     *
+     */
     public void renderBala1(){ 			//Renderea las balas del tipo 1
     	TextureRegion keyFrame;
     	int len = mundo.Mejoral.size();
@@ -233,6 +257,13 @@ public class RenderMundo {
     	}
 
         }
+    
+    /**
+     * MÈtodo renderGripe
+     * Metodo que con el batch junta todas las animaciones de los Villanos para pintar
+     * 
+     *
+     */
     
     public void renderGripe(){ 			//Renderea al malo del nivel 1 gripe
     	
@@ -284,6 +315,13 @@ public class RenderMundo {
         }
     
     }
+    
+    /**
+     * MÈtodo renderGripeJ
+     * Metodo que con el batch junta todas las animaciones de los Jefes para pintar
+     * 
+     *
+     */
     public void renderGripeJ(){  //Renderea al Jefe
     	TextureRegion keyFrame;
     	switch(PantallaMision.mision){
@@ -310,6 +348,13 @@ public class RenderMundo {
     	}
     	
     }
+    
+    /**
+     * MÈtodo renderLluvia
+     * Metodo que con el batch junta todas las animaciones de la Lluvia para pintar
+     * 
+     *
+     */
     private void renderLluvia(){
     	TextureRegion keyFrame;
     	if(PantallaMision.mision == 3||PantallaMision.mision == 4){

@@ -8,6 +8,14 @@ import com.jcj.framework.gl.Texture;
 import com.jcj.framework.gl.TextureRegion;
 import com.jcj.framework.impl.GLGame;
 
+
+/**
+ * Clase Recursos
+ * Clase donde se corta y obtiene las animaciones sonidos e imagenes para pintar
+ * 
+ *
+ * @author Bacon Rocket Studios basado en el libro Beginning Android Games de Mario Zechner
+ */
 public class Recursos {
     public static Texture background;
     public static TextureRegion backgroundRegion;
@@ -85,6 +93,13 @@ public class Recursos {
     public static Sound clickSound;
     public static Sound balazo;
 
+    /**
+     * Método load
+     * Método que carga todas las texturas
+     * 
+     * @param GLGame game 
+     * 
+     */
     public static void load(GLGame game) {
     	
         background = new Texture(game, "background.png");
@@ -245,6 +260,11 @@ public class Recursos {
         balazo =game.getAudio().newSound("balazo.ogg");
     }
 
+    /**
+     * Método reload
+     * Método que actualiza las texturas
+     * 
+     */
     public static void reload() {
         background.reload();
         background2.reload();
@@ -255,6 +275,11 @@ public class Recursos {
             music.play();
     }
 
+    /**
+     * Método playSound
+     * Método que reproduce el sonido si en los Settings esta guardado la opcion de play
+     * 
+     */
     public static void playSound(Sound sound) {
         if (Settings.soundEnabled)
             sound.play(1);

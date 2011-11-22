@@ -14,6 +14,12 @@ import java.util.List;
 import javax.microedition.khronos.opengles.GL10;
 
 
+/**
+ * Clase PantallaMision extiende a la clase GLScreen
+ * Clase donde se crea la pantalla en la que se muestra el menu de las misiones
+ *
+ * @author Bacon Rocket Studios basado en el libro Beginning Android Games de Mario Zechner
+ */
 
 public class PantallaMision extends GLScreen {
     Camera2D guiCam;
@@ -35,7 +41,7 @@ public class PantallaMision extends GLScreen {
         guiCam = new Camera2D(glGraphics, 480, 320);
         batcher = new SpriteBatcher(glGraphics, 100);
         misionunoBounds = new Rectangle(16, 191, 88, 60);
-        regresarMenuPrincipal = new Rectangle(360, 0, 120, 41);
+        regresarMenuPrincipal = new Rectangle(300, 0, 180, 61);
         misiondosBounds = new Rectangle(16,125,88,60);
         misiontresBounds = new Rectangle(385,191,88,60);
         misioncuatroBounds = new Rectangle(385,125,88,60);
@@ -43,17 +49,34 @@ public class PantallaMision extends GLScreen {
         touchPoint = new Vector2();
     }
     
+    /**
+     * Método pause
+     * Método que pause y deja de actualizar
+     * 
+     */
+    
     @Override
     public void pause() {
         Settings.save(game.getFileIO());
     }
 
+    /**
+     * Método resume
+     * Metodo que repinta el fondo o background
+     * 
+     *
+     */
     @Override
     public void resume() {
     	bgImage = new Texture(glGame, "misiones.png");
         bgRegion = new TextureRegion(bgImage, 0, 0, 480, 320);
 
     }
+    
+    /**
+     * Método dispose
+     * Método que libera la memoria del background
+     */
 
     @Override
     public void dispose() {
@@ -62,6 +85,14 @@ public class PantallaMision extends GLScreen {
     }
     
     
+    /**
+     * Método update
+     * Metodo que actualiza las acciones realizadas en la pantalla
+     * 
+     * @param float deltaTime indica el tiempo transcurrido del sistema desde la
+     * última vez que se actualizo
+     *
+     */
     @Override
     public void update(float deltaTime) {
         List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
@@ -116,6 +147,15 @@ public class PantallaMision extends GLScreen {
         }
     }
 
+    
+    /**
+     * Método present
+     * Método que maneja el batcher y la camara, donde se pintan las texturas
+     * 
+     * @param float deltaTime indica el tiempo transcurrido del sistema desde la
+     * última vez que se actualizo
+     *
+     */
     @Override
     public void present(float deltaTime) {
         GL10 gl = glGraphics.getGL();
@@ -133,7 +173,7 @@ public class PantallaMision extends GLScreen {
         batcher.beginBatch(Recursos.items);
             batcher.drawSprite(60, 160, 90, 185, Recursos.misionIzq);
             batcher.drawSprite(435, 160, 90, 185, Recursos.misionDer);
-            batcher.drawSprite(420, 20, 120, 41, Recursos.regresarMenuPrincipal);
+            batcher.drawSprite(390, 31, 180, 61, Recursos.regresarMenuPrincipal);
             batcher.drawSprite(240, 160, 120, 148, Recursos.cell);
         batcher.endBatch();
 

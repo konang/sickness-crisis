@@ -23,7 +23,15 @@ public class PantallaGanar extends GLScreen {
     static String score2;
     Vector2 touchPoint;
     static String score3;
-
+    
+    /**
+     * Clase PantallaHighscores extiende a la clase GLScreen
+     * Clase donde se crea la pantalla para visualizar los puntajes salvados de cada misión
+     *
+     * @author Bacon Rocket Studios basado en el libro Beginning Android Games de Mario Zechner
+     */
+    
+    
     public PantallaGanar(Game game) {
         super(game);
         guiCam = new Camera2D(glGraphics, 480, 320);
@@ -36,11 +44,22 @@ public class PantallaGanar extends GLScreen {
         touchPoint = new Vector2();
     }
     
+    /**
+     * Método pause
+     * Método que pause y deja de actualizar
+     * 
+     */
     @Override
     public void pause() {
         Settings.save(game.getFileIO());
     }
 
+    
+    /**
+     * Método resume
+     * Metodo que repinta el fondo o background
+     * 
+     */
     @Override
     public void resume() {
     	bgImage = new Texture(glGame, "ganaste.png");
@@ -48,13 +67,27 @@ public class PantallaGanar extends GLScreen {
 
     }
 
+    
+    /**
+     * Método dispose
+     * Método que libera la memoria del background
+     * 
+     *
+     */
     @Override
     public void dispose() {
     	bgImage.dispose();
         
     }
     
-    
+    /**
+     * Método update
+     * Metodo que actualiza las acciones realizadas en la pantalla
+     * 
+     * @param float deltaTime indica el tiempo transcurrido del sistema desde la
+     * última vez que se actualizo
+     *
+     */
     @Override
     public void update(float deltaTime) {
         List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
@@ -79,6 +112,15 @@ public class PantallaGanar extends GLScreen {
         }
     }
 
+    
+    /**
+     * Método present
+     * Método que maneja el batcher y la camara, donde se pintan las texturas
+     * 
+     * @param float deltaTime indica el tiempo transcurrido del sistema desde la
+     * última vez que se actualizo
+     *
+     */
     @Override
     public void present(float deltaTime) {
         GL10 gl = glGraphics.getGL();

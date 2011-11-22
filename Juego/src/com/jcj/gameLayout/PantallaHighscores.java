@@ -20,7 +20,7 @@ import javax.microedition.khronos.opengles.GL10;
  * Clase PantallaHighscores extiende a la clase GLScreen
  * Clase donde se crea la pantalla para visualizar los puntajes salvados de cada misión
  *
- * @author jugandoconjava basado en el libro Beginning Android Games de Mario Zechner
+ * @author Bacon Rocket Studios basado en el libro Beginning Android Games de Mario Zechner
  */
 
 public class PantallaHighscores extends GLScreen {
@@ -113,9 +113,7 @@ public class PantallaHighscores extends GLScreen {
     /**
      * Método resume
      * Metodo que repinta el fondo o background
-     * 
-     * @param float deltaTime indica el tiempo transcurrido del sistema desde la
-     * última vez que se actualizo
+     *
      *
      */
 
@@ -139,9 +137,6 @@ public class PantallaHighscores extends GLScreen {
     /**
      * Método dispose
      * Método que libera la memoria del background
-     * 
-     * @param float deltaTime indica el tiempo transcurrido del sistema desde la
-     * última vez que se actualizo
      *
      */
     @Override

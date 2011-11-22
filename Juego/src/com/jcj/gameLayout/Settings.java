@@ -7,11 +7,26 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
+
+/**
+ * Clase Settings
+ * Clase que maneja por medio de un archivo las preferencias de sonido y los puntajes altos
+ *
+ * @author Bacon Rocket Studios basado en el libro Beginning Android Games de Mario Zechner
+ */
+
 public class Settings {
     public static boolean soundEnabled = true;
     public final static int[] highscores = new int[] {100, 80, 50, 30, 10};
     public final static String file = ".superjumper";
 
+    /**
+     * Método load
+     * Metodo que carga el archivo para guardar los puntajes
+     * 
+     * @param FileIo files variable para accesar los archivos
+     *
+     */
     public static void load(FileIO files) {
         BufferedReader in = null;
         try {
@@ -33,6 +48,14 @@ public class Settings {
             }
         }
     }
+    
+    /**
+     * Método load
+     * Metodo que guarda y salva el archivo 
+     * 
+     * @param FileIo files variable para accesar los archivos
+     *
+     */
 
     public static void save(FileIO files) {
         BufferedWriter out = null;
@@ -55,6 +78,14 @@ public class Settings {
             }
         }
     }
+    
+    /**
+     * Método load
+     * Metodo que guarda los puntajes si son los más altos obtenidos
+     * 
+     * @param int score numero de score que se guarda si es mayor al anterior
+     *
+     */
 
     public static void addScore(int score) {
     	if (highscores [PantallaMision.mision-1] < score) {

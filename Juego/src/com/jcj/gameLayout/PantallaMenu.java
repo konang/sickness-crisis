@@ -13,6 +13,12 @@ import java.util.List;
 import javax.microedition.khronos.opengles.GL10;
 
 
+/**
+ * Clase PantallaMenu extiende a la clase GLScreen
+ * Clase donde se crea la pantalla en la que se muestra el menu principal
+ *
+ * @author Bacon Rocket Studios basado en el libro Beginning Android Games de Mario Zechner
+ */
 
 public class PantallaMenu extends GLScreen {
     Camera2D guiCam;
@@ -29,12 +35,21 @@ public class PantallaMenu extends GLScreen {
         guiCam = new Camera2D(glGraphics, 480, 320);
         batcher = new SpriteBatcher(glGraphics, 100);
         soundBounds = new Rectangle(0, 0, 64, 64);
-        jugarBounds = new Rectangle(192 , 110 + 17, 191, 35);
-        highscoresBounds = new Rectangle(192 , 110 - 17, 191, 35);
-        instruccionesBounds = new Rectangle(192, 110 - 17 - 35, 191, 35);
+        jugarBounds = new Rectangle(192 , 110 + 22, 120, 44);
+        highscoresBounds = new Rectangle(192 , 110 - 22, 120, 44);
+        instruccionesBounds = new Rectangle(192, 110 - 22 - 44, 120, 44);
         touchPoint = new Vector2();
     }
     
+    
+    /**
+     * Método update
+     * Metodo que actualiza las acciones realizadas en la pantalla
+     * 
+     * @param float deltaTime indica el tiempo transcurrido del sistema desde la
+     * última vez que se actualizo
+     *
+     */
     @Override
     public void update(float deltaTime) {
         List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
@@ -76,6 +91,15 @@ public class PantallaMenu extends GLScreen {
             }
         }
     }
+    
+    /**
+     * Método present
+     * Método que maneja el batcher y la camara, donde se pintan las texturas
+     * 
+     * @param float deltaTime indica el tiempo transcurrido del sistema desde la
+     * última vez que se actualizo
+     *
+     */
 
     @Override
     public void present(float deltaTime) {
@@ -93,7 +117,7 @@ public class PantallaMenu extends GLScreen {
 
         batcher.beginBatch(Recursos.items);
             batcher.drawSprite(240, 320 - 10 - 71, 275, 105, Recursos.logo);
-            batcher.drawSprite(240, 110, 96, 106, Recursos.mainMenu);
+            batcher.drawSprite(240, 110, 120, 132, Recursos.mainMenu);
             batcher.drawSprite(20, 17, 40, 35, Settings.soundEnabled ? Recursos.soundOn : Recursos.soundOff);
             batcher.drawSprite(92, 120, 192, 137, Recursos.jefes);
             batcher.drawSprite(390, 100, 60, 74, Recursos.cell);
@@ -102,16 +126,33 @@ public class PantallaMenu extends GLScreen {
         gl.glDisable(GL10.GL_BLEND);
     }
 
+    /**
+     * Método pause
+     * Método que pause y deja de actualizar
+     * 
+     */
     @Override
     public void pause() {
         Settings.save(game.getFileIO());
     }
 
+    
+    /**
+     * Método resume
+     * Metodo que repinta el fondo o background
+     * 
+     *
+     */
     @Override
     public void resume() {
 
     }
 
+    
+    /**
+     * Método dispose
+     * Método que libera la memoria del background
+     */
     @Override
     public void dispose() {
         

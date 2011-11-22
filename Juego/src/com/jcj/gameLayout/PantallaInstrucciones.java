@@ -15,9 +15,9 @@ import javax.microedition.khronos.opengles.GL10;
 
 /**
  * Clase PantallaInstrucciones extiende a la clase GLScreen
- * Clase donde se crea la pantalla para visualizar la informacion de cada misión
+ * Clase donde se crea la pantalla para visualizar las instrucciones
  *
- * @author jugandoconjava basado en el libro Beginning Android Games de Mario Zechner
+ * @author Bacon Rocket Studios basado en el libro Beginning Android Games de Mario Zechner
  */
 
 public class PantallaInstrucciones extends GLScreen {
@@ -44,11 +44,23 @@ public class PantallaInstrucciones extends GLScreen {
         touchPoint = new Vector2();
     }
     
+    
+    /**
+     * Método pause
+     * Método que pause y deja de actualizar
+     * 
+     */
     @Override
     public void pause() {
         Settings.save(game.getFileIO());
     }
 
+    
+    /**
+     * Método resume
+     * Metodo que repinta el fondo o background
+     * 
+     */
     @Override
     public void resume() {
     	bgIns = new Texture(glGame, "instrucciones.png");
@@ -56,13 +68,24 @@ public class PantallaInstrucciones extends GLScreen {
 
     }
 
+    
+    /**
+     * Método dispose
+     * Método que libera la memoria del background
+     *
+     */
     @Override
     public void dispose() {
     	bgIns.dispose();
         
     }
     
-    
+    /**
+     * Método update
+     * Metodo que actualiza las acciones realizadas en la pantalla
+     * 
+     *
+     */
     @Override
     public void update(float deltaTime) {
         List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
@@ -93,6 +116,15 @@ public class PantallaInstrucciones extends GLScreen {
             }
         }
     }
+    
+    /**
+     * Método present
+     * Método que maneja el batcher y la camara, donde se pintan las texturas
+     * 
+     * @param float deltaTime indica el tiempo transcurrido del sistema desde la
+     * última vez que se actualizo
+     *
+     */
 
     @Override
     public void present(float deltaTime) {

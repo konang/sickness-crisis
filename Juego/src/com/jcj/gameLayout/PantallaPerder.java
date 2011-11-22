@@ -13,6 +13,14 @@ import com.jcj.framework.math.Vector2;
 import java.util.List;
 import javax.microedition.khronos.opengles.GL10;
 
+
+/**
+ * Clase PantallaPerder extiende a la clase GLScreen
+ * Clase donde se crea la pantalla en la que se muestra cuando el usuario pierde
+ * 
+ *
+ * @author Bacon Rocket Studios basado en el libro Beginning Android Games de Mario Zechner
+ */
 public class PantallaPerder extends GLScreen {
     Camera2D guiCam;
     SpriteBatcher batcher;
@@ -34,23 +42,50 @@ public class PantallaPerder extends GLScreen {
         touchPoint = new Vector2();
     }
     
+    /**
+     * Método pause
+     * Método que pause y deja de actualizar
+     * 
+     */
+    
     @Override
     public void pause() {
         Settings.save(game.getFileIO());
     }
 
+    
+    /**
+     * Método resume
+     * Metodo que repinta el fondo o background
+     * 
+     *
+     */
     @Override
     public void resume() {
     	bgImage = new Texture(glGame, "perdiste.png");
         bgRegion = new TextureRegion(bgImage, 0, 0, 480, 320);
 
     }
+    
+    /**
+     * Método dispose
+     * Método que libera la memoria del background
+     */
 
     @Override
     public void dispose() {
     	bgImage.dispose();
         
     }
+    
+    /**
+     * Método update
+     * Metodo que actualiza las acciones realizadas en la pantalla
+     * 
+     * @param float deltaTime indica el tiempo transcurrido del sistema desde la
+     * última vez que se actualizo
+     *
+     */
     
     
     @Override
@@ -84,6 +119,15 @@ public class PantallaPerder extends GLScreen {
         }
     }
 
+    
+    /**
+     * Método present
+     * Método que maneja el batcher y la camara, donde se pintan las texturas
+     * 
+     * @param float deltaTime indica el tiempo transcurrido del sistema desde la
+     * última vez que se actualizo
+     *
+     */
     @Override
     public void present(float deltaTime) {
         GL10 gl = glGraphics.getGL();
