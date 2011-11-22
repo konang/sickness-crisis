@@ -190,7 +190,6 @@ public class PantallaJuego extends GLScreen {
         if(deltaTime>rand.nextFloat()*world.Gripe.size()&&world.Gripe.size()<10){
             Villano villanonuevo = new Villano((world.ANCHO_MUNDO)+((int)(Math.random() * 480*2) + 50), world.ALTO_MUNDO/4);
             world.Gripe.add(villanonuevo);
-            Recursos.playSound(Recursos.clickSound);
         }
         
         for (int i = 0; i < len; i ++) {
@@ -199,14 +198,14 @@ public class PantallaJuego extends GLScreen {
                 touchPoint.set(event.x, event.y);
                 guiCam.touchToWorld(touchPoint);
                 
-                if (OverlapTester.pointInRectangle(boton1Bounds, touchPoint)&&world.Mejoral.size()<4) {
+                if (OverlapTester.pointInRectangle(boton1Bounds, touchPoint)&&world.Mejoral.size()<3) {
                 	Recursos.playSound(Recursos.balazo);
                 	
                 	if(world.John.estado == Heroe.ESTADO_DERECHA|| world.John.estado == Heroe.SALTO_HEROEDER){ 
             		//CREA LA BALA BASANDOSE EN DONDE VOLTEA EL MONO
             		Balas balanueva = new Balas( world.John.position.x+30, world.John.position.y-10);
             		balanueva.estado = Balas.ESTADO_DERECHA;
-            		balanueva.velocidad = 7f;
+            		balanueva.velocidad = 3.5f;
                 	//CAMBIA EL ESTADO DE LA BALA BASADO EN LA DIRECCION DE JOHN
             		
             		world.Mejoral.add(balanueva);
@@ -217,7 +216,7 @@ public class PantallaJuego extends GLScreen {
             		//CREA LA BALA BASANDOSE EN DONDE VOLTEA EL MONO
             		Balas balanueva = new Balas( world.John.position.x, world.John.position.y-10); 
                 	balanueva.estado = Balas.ESTADO_IZQUIERDA;
-                	balanueva.velocidad = -7f;
+                	balanueva.velocidad = -4f;
                 	//CAMBIE EL ESTADO DE LA BALA BASADO EN LA DIRECCION DE JOHN
                 	
             		world.Mejoral.add(balanueva);
@@ -244,7 +243,7 @@ public class PantallaJuego extends GLScreen {
                 }
 
                 if (OverlapTester.pointInRectangle(derechaBounds, touchPoint)) {
-                    world.John.velocidadx=5.0f;
+                    world.John.velocidadx=2.5f;
                     if((world.John.estado ==Heroe.SALTO_HEROEDER)||( world.John.estado== Heroe.SALTO_HEROEIZQ)){
                     	world.John.estado = Heroe.SALTO_HEROEDER;
                     	}
@@ -255,7 +254,7 @@ public class PantallaJuego extends GLScreen {
                 }
 
                 if (OverlapTester.pointInRectangle(izquierdaBounds, touchPoint)) {
-                	world.John.velocidadx=-5.0f;
+                	world.John.velocidadx=-2.5f;
                     if((world.John.estado ==Heroe.SALTO_HEROEDER)||( world.John.estado== Heroe.SALTO_HEROEIZQ)){
                 	world.John.estado = Heroe.SALTO_HEROEIZQ;
                 	}
@@ -286,7 +285,7 @@ public class PantallaJuego extends GLScreen {
             
         }
         
-        if(world.John.vidas<2){
+        if(world.John.vidas<1){
         	state=GAME_OVER;
         }
         
@@ -336,22 +335,22 @@ public class PantallaJuego extends GLScreen {
             	switch (PantallaMision.mision){
             	case 1 : 
             		for(int i = 0; i<world.gripeJ.vidas; i++){
-            			batcher.drawSprite(240+14*i, 270, 14, 15, Recursos.vidaGripe);
+            			batcher.drawSprite(200+14*i, 270, 14, 15, Recursos.vidaGripe);
             		}
             		break;
             	case 2 : 
             		for(int i = 0; i<world.gripeJ.vidas; i++){
-            			batcher.drawSprite(240+14*i, 270, 14, 15, Recursos.vidaGastritis);
+            			batcher.drawSprite(200+14*i, 270, 14, 15, Recursos.vidaGastritis);
             		}
             		break;
             	case 3 : 
             		for(int i = 0; i<world.gripeJ.vidas; i++){
-            			batcher.drawSprite(240+14*i, 270, 14, 15, Recursos.vidaVaricela);
+            			batcher.drawSprite(200+14*i, 270, 14, 15, Recursos.vidaVaricela);
             		}
             		break;
             	case 4 : 
             		for(int i = 0; i<world.gripeJ.vidas; i++){
-            			batcher.drawSprite(240+14*i, 270, 14, 15, Recursos.vidaRota);
+            			batcher.drawSprite(200+14*i, 270, 14, 15, Recursos.vidaRota);
             		}
             		break;
             	}

@@ -23,7 +23,7 @@ public class Lluvia extends DynamicGameObject {
 	    public static final float ALTO_HEROE = 11f;          	//Alto del objeto
 	    int estado;                                          	//Guarda el estado actual del personaje
 	    float tiempoEstado;                                    	// Indica el tiempo que el personaje lleva en dicho estado
-	    float velocidad=-3;										//Velocidad inicial del Objeto
+	    float velocidad=-1;										//Velocidad inicial del Objeto
 	    boolean choque = false;									//Variable para verificar el choque
 	    
 	    

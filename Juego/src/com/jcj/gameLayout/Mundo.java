@@ -98,7 +98,7 @@ public class Mundo {
         updateLluvia(deltaTime);
         updateBalaGripe(deltaTime);
         
-        if(score >= 5){                   // Le movi al score para llegar al jefe
+        if(score >= 250){                   // Le movi al score para llegar al jefe
         	updateGripeJ(deltaTime);
         	jefeYa=true;
         	gripeJ.position.set(0 + Jefe.ANCHO_JEFE/2,ALTO_MUNDO/4 + Jefe.ALTO_JEFE/4 + 5);
@@ -119,11 +119,11 @@ public class Mundo {
     public void updateJohn(float deltaTime){
     	
     	
-    	if((John.estado==John.SALTO_HEROEDER||John.estado==John.SALTO_HEROEIZQ) && John.position.y<=180 && John.velocidady!=-12){
-    		John.velocidady=12;
+    	if((John.estado==John.SALTO_HEROEDER||John.estado==John.SALTO_HEROEIZQ) && John.position.y<=180 && John.velocidady!=-4){
+    		John.velocidady=4;
     	}
     	else if((John.estado==John.SALTO_HEROEDER||John.estado==John.SALTO_HEROEIZQ)&&John.position.y>=180){
-    		John.velocidady=-12;
+    		John.velocidady=-4;
     	}
     	if (John.position.y<80&&John.estado==John.SALTO_HEROEDER){
     		John.estado=Heroe.ESTADO_DERECHA;
@@ -140,33 +140,34 @@ public class Mundo {
     	John.update(deltaTime);
     }
     private void updateBalaGripe(float deltaTime){
-    	if (gripeJ.estado==Jefe.ESTADO_DERECHA && (BalaGripe.position.x > ANCHO_MUNDO || BalaGripe.position.x < 0)){
-    	BalaGripe.velocidad = 2;
-    	BalaGripe.position.x = gripeJ.position.x;
-    	BalaGripe.position.y = John.position.y-10;
-    	}
-    	if (gripeJ.estado==Jefe.ESTADO_IZQUIERDA && (BalaGripe.position.x > ANCHO_MUNDO || BalaGripe.position.x < 0)){
-    	BalaGripe.velocidad = -2;
-    	BalaGripe.position.x = gripeJ.position.x;
-    	BalaGripe.position.y = John.position.y-10;
-    	}
-
-    	if (OverlapTester.overlapRectangles(John.bounds, BalaGripe.bounds)) {
-    	BalaGripe.position.y = 500;
-    	Recursos.playSound(Recursos.hitSound);
-    	John.vidas--;
-    	}
-
-    	for (int i = 0; i < Mejoral.size(); i++){
-    	Balas bala = Mejoral.get(i);
-    	if (OverlapTester.overlapRectangles(bala.bounds, BalaGripe.bounds)) {
-    	BalaGripe.position.x = gripeJ.position.x;
-    	bala.choque = true;
-    	}
-    	}
-    	BalaGripe.update(deltaTime);
-
-    	}
+    	if(jefeYa){
+    		if (gripeJ.estado==Jefe.ESTADO_DERECHA && (BalaGripe.position.x > ANCHO_MUNDO || BalaGripe.position.x < 0)){
+	    			BalaGripe.velocidad = 1;
+	    			BalaGripe.position.x = gripeJ.position.x;
+	    			BalaGripe.position.y = John.position.y-10;
+	    	}
+	    	if (gripeJ.estado==Jefe.ESTADO_IZQUIERDA && (BalaGripe.position.x > ANCHO_MUNDO || BalaGripe.position.x < 0)){
+	    		BalaGripe.velocidad = -1;
+	    		BalaGripe.position.x = gripeJ.position.x;
+	    		BalaGripe.position.y = John.position.y-10;
+	    	}
+	
+	    	if (OverlapTester.overlapRectangles(John.bounds, BalaGripe.bounds)) {
+	    		BalaGripe.position.y = 500;
+	    		Recursos.playSound(Recursos.hitSound);
+	    		John.vidas--;
+	    	}
+	
+	    	for (int i = 0; i < Mejoral.size(); i++){
+	    		Balas bala = Mejoral.get(i);
+	    		if (OverlapTester.overlapRectangles(bala.bounds, BalaGripe.bounds)) {
+	    			BalaGripe.position.x = gripeJ.position.x;
+	    			bala.choque = true;
+	    		}
+	    	}
+	    	BalaGripe.update(deltaTime);
+	    }
+    }
 
     /**
      * Método updateBala.
@@ -253,10 +254,10 @@ public class Mundo {
         for (int i = 0; i < Gripe.size(); i++) {
             Villano malo = Gripe.get(i);
             if(John.position.x>malo.position.x){
-            	malo.velocidad = 2;
+            	malo.velocidad = 1;
             }
             else{
-            	malo.velocidad = -2;
+            	malo.velocidad = -1;
             }
             
             if(PantallaMision.mision==2||PantallaMision.mision == 4 && malo.estado==malo.ESTADO_DERECHA){
@@ -268,11 +269,11 @@ public class Mundo {
             }
             
             
-            if((malo.estado==Villano.SALTO_VILLANODER||malo.estado==Villano.SALTO_VILLANOIZQ)&&malo.position.y<=180&&malo.velocidady!=-3){
-        		malo.velocidady=3;
+            if((malo.estado==Villano.SALTO_VILLANODER||malo.estado==Villano.SALTO_VILLANOIZQ)&&malo.position.y<=180&&malo.velocidady!=-1.5){
+        		malo.velocidady=1.5f;
         	}
         	else if((malo.estado==Villano.SALTO_VILLANODER||malo.estado==Villano.SALTO_VILLANOIZQ)&&malo.position.y>=180){
-        		malo.velocidady=-3;
+        		malo.velocidady=-1.5f;
         	}
         	if (malo.position.y<80 && malo.estado==Villano.SALTO_VILLANODER){
         		malo.estado=malo.ESTADO_DERECHA;
