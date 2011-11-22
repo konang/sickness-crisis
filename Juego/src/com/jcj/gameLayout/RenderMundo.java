@@ -208,7 +208,7 @@ public class RenderMundo {
         			batcher.drawSprite(bala.position.x, bala.position.y, 12, 12, keyFrame);
         		break;
         		case 3:
-        			switch(mundo.John.estado){
+        			switch(bala.estado){
         			case Heroe.ESTADO_DERECHA:
         			case Heroe.SALTO_HEROEDER: 
         				keyFrame = Recursos.balaJohnV.getKeyFrame(mundo.John.tiempoEstado, Animation.ANIMATION_LOOPING);
