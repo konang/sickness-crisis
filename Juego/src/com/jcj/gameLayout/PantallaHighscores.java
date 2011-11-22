@@ -37,7 +37,7 @@ public class PantallaHighscores extends GLScreen {
         super(game);
 
         guiCam = new Camera2D(glGraphics, 480, 320);
-        backBounds = new Rectangle(0, 0, 64, 64);
+        backBounds = new Rectangle(0, 0, 100, 100);
         touchPoint = new Vector2();
         batcher = new SpriteBatcher(glGraphics, 100);
         highScores = new String[5];
